@@ -17,18 +17,8 @@ module UsefulDB
         UsefulDB::UsefulUtils.list.each do |i|
           puts red(index)
           index += 1
-          index_tag = 0
           msg = ''
-          msg += "- Tags: "
-          i["tag"].each do |j|
-            if index_tag == 0
-              msg += yellow(j)
-            else
-              msg += ", " + yellow(j)
-            end
-            index_tag += 1
-          end
-          puts msg + "\n"
+          msg += "- Tags: " + UsefulDB::UsefulUtils.array_to_s(i) + "\n"
           puts "- Value: " + red(i["value"]) + blue("\n##\n")     
         end
       end
@@ -62,7 +52,7 @@ module UsefulDB
         
         begin
           tags = ((STDIN.gets).strip).split(', ')
-          puts "The following was captured: " + tags.to_s
+          puts "The following was captured: " + UsefulDB::UsefulUtils.array_to_s(tags)
           puts "Is this correct? y/n"
           
           input = (STDIN.gets).strip
