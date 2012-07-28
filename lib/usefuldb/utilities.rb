@@ -84,22 +84,12 @@ module UsefulDB
       
       # Search for a tag in the DB
       def search(tag)
-        msg = "Searching the database for tag: " + yellow(tag) + "\n"
+        msg = "Searching the database for tag: " + tag + "\n"
         
         @data.each do |db|
           if db["tag"].include?(tag)
-            index_tag = 0
-            msg += "- Tags: "
-            db["tag"].each do |i|
-              if index_tag == 0
-                msg += yellow(i)
-              else
-                msg += ", " + yellow(i)
-              end
-              index_tag += 1
-            end
-            msg += "\n"
-            msg += "- Value: " + db["value"] + blue("\n##\n")
+            msg += "- Tags: " + array_to_s(db["tag"]) + "\n"
+            msg += "- Value: " + db["value"] + "\n##\n"
           end
         end
         return msg
@@ -110,8 +100,27 @@ module UsefulDB
       def list
         return @data
       end
-      
-  
+
+
+      # Convert an Array to a string
+      def array_to_s(a)
+        msg = ''
+        index = 0
+        msg += "["
+        a.each do |i|
+          if index == 0
+            msg += "\"" + i + "\""
+          else
+            msg += ", \"" + i + "\""
+          end
+          index += 1
+        end
+        msg += "]"
+
+        return msg
+      end
+
+
     end
   end
 
