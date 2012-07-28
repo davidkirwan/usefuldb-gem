@@ -2,6 +2,8 @@ usefuldb gem CHANGELOG
 
 ## Version 0.0.6
 - Added UsefulDB::UsefulUtils.array_to_s to convert an array into a string identical to Ruby 1.9.1 +'s Array#to_s
+- Removed colour output so as to display correctly on Windows hosts through JRuby
+- Slightly altered output from the listing functions
 
 ## Version 0.0.5
 - Fixed bordercase issue when deleting entries from the database

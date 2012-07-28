@@ -15,12 +15,12 @@ module UsefulDB
         UsefulDB.dbLoad
         index = 0
         UsefulDB::UsefulUtils.list.each do |i|
-          puts red(index)
+          puts "Element: " + index.to_s
           index += 1
           msg = ''
           msg += "- Tags: " + UsefulDB::UsefulUtils.array_to_s(i["tag"]) + "\n"
           puts msg
-          puts "- Value: " + i["value"] + "\n##\n" 
+          puts "- Value: " + i["value"] + "\n\n##\n" 
         end
       end
       
