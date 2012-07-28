@@ -107,17 +107,17 @@ module UsefulDB
       def array_to_s(a)
         msg = ''
         index = 0
-        
         msg += "["
         a.each do |i|
-          if index_tag == 0
-            msg += '"' + i + '"'
+          if index == 0
+            msg += "\"" + i + "\""
           else
-            msg += ', "' + i + '"'
+            msg += ", \"" + i + "\""
           end
           index += 1
         end
         msg += "]"
+
         return msg
       end
 

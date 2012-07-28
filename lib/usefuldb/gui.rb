@@ -18,7 +18,8 @@ module UsefulDB
           puts red(index)
           index += 1
           msg = ''
-          msg += "- Tags: " + UsefulDB::UsefulUtils.array_to_s(i) + "\n"
+          msg += "- Tags: " + UsefulDB::UsefulUtils.array_to_s(i["tag"]) + "\n"
+          puts msg
           puts "- Value: " + red(i["value"]) + blue("\n##\n")     
         end
       end
