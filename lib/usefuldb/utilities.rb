@@ -63,7 +63,7 @@ module UsefulDB
         elsif @data["db"].count <= key || key < 0
           raise KeyOutOfBounds, "Key is out of bounds and therefore does not exist in the DB"
         else
-          @data.delete_at(key) 
+          @data["db"].delete_at(key) 
         end
       end
       

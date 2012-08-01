@@ -1,5 +1,8 @@
 usefuldb gem CHANGELOG
 
+## Version 0.0.8
+- Fixed issue introduced in 0.0.7 with deleting elements 
+
 ## Version 0.0.7
 - Updated layout of the yaml database file to include description field for each entry
 - Updated layout of the yaml database file to include a version field
