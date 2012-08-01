@@ -42,25 +42,25 @@ module UsefulDB
       
       # Return the number of elements in the database.
       def count()
-        if @data.count == 0
+        if @data["db"].count == 0
           raise EmptyDB, "The DB is currently empty."
         else
-          return @data.count
+          return @data["db"].count
         end
       end
       
       
       # Add an element to the database
       def add(hash, opts)
-        if @data.include?(hash) then raise EntryInDB, "Entry already in the DB"; else @data << hash; end    
+        if @data["db"].include?(hash) then raise EntryInDB, "Entry already in the DB"; else @data["db"] << hash; end    
       end
   
       
       # Remove an element from the database
       def remove(key, opts)
-        if @data.count == 0
+        if @data["db"].count == 0
           raise EmptyDB, "You cannot call the remove function on an empty Database!"
-        elsif @data.count <= key || key < 0
+        elsif @data["db"].count <= key || key < 0
           raise KeyOutOfBounds, "Key is out of bounds and therefore does not exist in the DB"
         else
           @data.delete_at(key) 
@@ -86,10 +86,11 @@ module UsefulDB
       def search(tag)
         msg = "Searching the database for tag: " + tag + "\n"
         
-        @data.each do |db|
+        @data["db"].each do |db|
           if db["tag"].include?(tag)
             msg += "- Tags: " + array_to_s(db["tag"]) + "\n"
-            msg += "- Value: " + db["value"] + "\n##\n"
+            msg += "- Value: " + db["value"] + "\n"
+            msg += "- Description: " + db["description"] +"\n##\n"
           end
         end
         return msg
@@ -98,7 +99,7 @@ module UsefulDB
       
       # List out all elements in the DB
       def list
-        return @data
+        return @data["db"]
       end
 
 

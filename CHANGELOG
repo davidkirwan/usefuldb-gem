@@ -1,5 +1,10 @@
 usefuldb gem CHANGELOG
 
+## Version 0.0.7
+- Updated layout of the yaml database file to include description field for each entry
+- Updated layout of the yaml database file to include a version field
+- Updated system to allow automatic upgrading of older databases to the new structure
+
 ## Version 0.0.6
 - Added UsefulDB::UsefulUtils.array_to_s to convert an array into a string identical to Ruby 1.9.1 +'s Array#to_s
 - Removed colour output so as to display correctly on Windows hosts through JRuby
