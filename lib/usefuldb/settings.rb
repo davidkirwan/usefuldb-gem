@@ -12,7 +12,7 @@ module UsefulDB
         begin
           @data = YAML.load(File.open(path))
           
-          if @data["version"].nil?
+          if @data.class == Array
             puts "Assuming currently installed DB version < 0.0.7 running autoConvert"
             autoConvert()
             save(@data, path)
