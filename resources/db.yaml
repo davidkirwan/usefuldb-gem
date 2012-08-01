@@ -1,13 +1,42 @@
 ---
-- tag:
-  - install
-  - rubygems
-  - website
-  - usefuldb
-  value: http://rubygems.org/usefuldb
-- tag:
-  - search
-  - find
-  - website
-  - google
-  value: http://www.google.com
+version: 0.0.7
+db:
+  - tag:
+    - install
+    - rubygems
+    - website
+    - usefuldb
+    value: http://rubygems.org/usefuldb
+    description: Website URL for the usefuldb gem
+  - tag:
+    - search
+    - find
+    - website
+    - google
+    value: http://www.google.com
+    description: Google a major search engine
+  - tag:
+    - git
+    - add
+    value: git add <path>
+    description: Requesting git add files to the current git branch
+  - tag:
+    - git
+    - commit
+    value: git commit -m 'commit message'
+    description: Committing the files along with a commit message to the current git branch
+  - tag:
+    - git
+    - push
+    value: git push origin <branch>
+    description: Requesting git upload the commited changes to the remote branch
+  - tag:
+    - git
+    - merge
+    value: git merge --no-ff <branch>
+    description: Command to merge the specified branch into the current branch
+  - tag:
+    - git
+    - checkout
+    value: git checkout <branch>
+    description: Checkout the specified branch
