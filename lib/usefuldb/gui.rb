@@ -5,16 +5,28 @@ module UsefulDB
   class GUI
     class << self
       attr_accessor 
-       
-      def search(args)
-        UsefulDB.dbLoad
-        args.each {|i| puts "\n" + UsefulDB::UsefulUtils.search(i)} 
+      
+      
+      # Search the database
+      def search(args, log)
+        log.debug "Loading the database"
+        UsefulDB.dbLoad(log)
+        
+        log.debug "Launching UsefulDB::UsefulUtils.search"
+        args.each {|i| puts "\n" + UsefulDB::UsefulUtils.search(i, log)} 
       end
       
-      def list
-        UsefulDB.dbLoad
+      
+      # List entries in the database
+      def list(log)
+        log.debug "Loading the database"
+        UsefulDB.dbLoad(log)
+        
+        log.debug "Launching UsefulDB::UsefulUtils.list"
         index = 0
-        UsefulDB::UsefulUtils.list.each do |i|
+        listing = UsefulDB::UsefulUtils.list(log)
+        
+        listing.each do |i|
           puts "Element: " + index.to_s
           index += 1
           msg = ''
@@ -23,62 +35,67 @@ module UsefulDB
           puts "- Value: " + i["value"]
           puts "- Description: " + i["description"] + "\n\n##\n" 
         end
+        
+        log.info "Number of entries in the database is: " + UsefulDB::UsefulUtils.count(log).to_s
       end
       
       
-      
-      def remove(opts)
-        if opts[:v] then puts "in verbose mode\n"; end
-        list()
+      # Remove an entry from the database
+      def remove(log)
+        log.info "Printing out the list of database entries\n"
+        list(log)
         
         puts "Enter the number of the element from the list above which you want to delete"
         value = STDIN.gets
+        log.debug value
                 
         begin
-          UsefulDB.remove(value.to_i, {})
-          UsefulDB.dbSave
+          UsefulDB.remove(value.to_i, log)
+          log.info "Entry removed"
+          UsefulDB.dbSave(log)
+          log.info "Saving database"
         rescue KeyOutOfBounds => e
           puts e.message + "\nexiting."
+          log.fatal e.message
           exit()
         end
         
       end
       
-       
-      def add(opts)
-        UsefulDB.dbLoad
+      
+      # Add element to the database
+      def add(log)
+        UsefulDB.dbLoad(log)
         
-        if opts[:v]
-          puts "in verbose mode\n"
-          puts "Please enter the comma separated search tags like the following:"
-          puts "eg:\nterm1, term2, term3\n\n"
-        else
-          puts "Please enter the comma separated search tags like the following:"
-        end
+        puts "Please enter the comma separated search tags like the following:"
+        log.info "eg:\nterm1, term2, term3\n\n"
         
         begin
           tags = ((STDIN.gets).strip).split(', ')
-                    
+          log.debug tags.inspect          
+          
           puts "Please enter the value you wish to store for this database entry:"
           value = (STDIN.gets).strip
+          log.debug value
           
           puts "Please enter a description for this entry: "
           description = (STDIN.gets).strip
+          log.debug description
           
           entry = {"tag" => tags, "value" => value, "description" => description}
           
-          if opts[:v]
-            puts "Storing the following in the database:\n" 
-            puts "Search tags: " + UsefulDB::UsefulUtils.array_to_s(tags)
-            puts "Entry Value: " + value
-            puts "Description: " + description
-          end
+          log.info "Storing the following in the database:" 
+          log.info "Search tags: " + UsefulDB::UsefulUtils.array_to_s(tags)
+          log.info "Entry Value: " + value
+          log.info "Description: " + description
               
-          UsefulDB.add(entry, {})
-          UsefulDB.dbSave
+          UsefulDB.add(entry, log)
+          UsefulDB.dbSave(log)
+          log.info "Saving database"
           
         rescue Exception => e
           puts e.message
+          log.fatal e.message
           exit
         end
         
