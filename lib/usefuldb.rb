@@ -4,36 +4,37 @@ require 'usefuldb/exceptions'
 require 'usefuldb/gui'
 require 'usefuldb/version'
 require 'fileutils'
+require 'logger'
 
 module UsefulDB
   class << self
         
-    def add(hash, opts)
-      UsefulDB::UsefulUtils.add(hash, opts)
+    def add(hash, log)
+      UsefulDB::UsefulUtils.add(hash, log)
     end
   
-    def count()
-      UsefulDB::UsefulUtils.count
+    def count(log)
+      UsefulDB::UsefulUtils.count(log)
     end
     
-    def remove(key, opts)
-      UsefulDB::UsefulUtils.remove(key, opts)
+    def remove(key, log)
+      UsefulDB::UsefulUtils.remove(key, log)
     end
     
-    def dbSave
-      UsefulDB::UsefulUtils.dbSave
+    def dbSave(log)
+      UsefulDB::UsefulUtils.dbSave(log)
     end
     
-    def dbLoad
-      UsefulDB::UsefulUtils.dbLoad
+    def dbLoad(log)
+      UsefulDB::UsefulUtils.dbLoad(log)
     end
     
-    def search(args)
-      return UsefulDB::UsefulUtils.search(args)
+    def search(args, log)
+      return UsefulDB::UsefulUtils.search(args, log)
     end
     
-    def setup
-      UsefulDB::UsefulUtils.setup
+    def setup(log)
+      UsefulDB::UsefulUtils.setup(log)
     end
 
   end

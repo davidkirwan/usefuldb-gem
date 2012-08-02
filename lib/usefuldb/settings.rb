@@ -5,28 +5,32 @@ module UsefulDB
   class Settings
     class << self
   
-      attr_accessor :data
+      attr_accessor :data;
       
       # Loads the database from disk
-      def load(path)
+      def load(path, log)
         begin
           @data = YAML.load(File.open(path))
           
           if @data.class == Array
-            puts "Assuming currently installed DB version < 0.0.7 running autoConvert"
-            autoConvert()
-            save(@data, path)
+            log.warn "Assuming currently installed DB version < 0.0.7 running autoConvert"
+            
+            autoConvert(log)
+            log.warn "Database conversion successful"
+            save(@data, path, log)
+            log.debug "Saving the database"
           elsif @data["version"] != UsefulDB::Version.to_s
-            puts "The database version is lower than the latest version running autoUpgrade"
-            autoUpgrade()
-            save(@data, path)
+            log.warn "The database version is lower than the latest version running autoUpgrade"
+            
+            autoUpgrade(log)
+            log.warn "Database upgrade successful"
+            save(@data, path, log)
+            log.debug "Saving the database"
           else
-            #puts "Database version is current"
+            log.debug "Database version is current"
           end
           
-          
-          # Debug
-          #puts @data.inspect
+          log.debug @data.inspect
           
         rescue ArgumentError => e
           exit("Could not parse YAML: #{e.message}")
@@ -35,7 +39,7 @@ module UsefulDB
       
       
       # Saves the database to disk
-      def save(newData, path)
+      def save(newData, path, log)
         @data = newData
         f = File.open(path, "w")
         f.write(@data.to_yaml)
@@ -44,8 +48,8 @@ module UsefulDB
       
       
       # Converts from db versions < 0.0.6 to the structure introduced in version 0.0.7
-      def autoConvert()
-        puts "autoConvert Method executing"
+      def autoConvert(log)
+        log.warn "autoConvert Method executing"
         convertedDB = {"version" => UsefulDB::Version.to_s, "db" => @data}
         
         convertedDB["db"].each do |element|
@@ -57,8 +61,8 @@ module UsefulDB
       
       
       # Convert the db from versions lower than the latest version of usefuldb to the latest version
-      def autoUpgrade()
-        puts "autoUpgrade Method executing"
+      def autoUpgrade(log)
+        log.warn "autoUpgrade Method executing"
         @data["version"] = UsefulDB::Version.to_s
       end
       

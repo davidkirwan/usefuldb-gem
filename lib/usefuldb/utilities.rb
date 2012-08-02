@@ -1,4 +1,5 @@
 require 'usefuldb/exceptions'
+require 'logger'
 
 module UsefulDB
 
@@ -20,28 +21,28 @@ module UsefulDB
       
       
       # Save the database to disk
-      def dbSave()
+      def dbSave(log)
         if @dbpath.nil?
-          #@dbpath = File.expand_path(File.dirname(__FILE__) + '/../../resources/db.yaml')
+          log.debug @dbpath = File.expand_path(File.dirname(__FILE__) + '/../../resources/db.yaml')
           @dbpath = ENV['HOME'] + "/.usefuldb/db.yaml"
-          Settings.save(@data, @dbpath)
+          UsefulDB::Settings.save(@data, @dbpath, log)
         else
-          Settings.save(@data, @dbpath)
+          UsefulDB::Settings.save(@data, @dbpath, log)
         end
       end
       
       
       # Load the database from disk
-      def dbLoad()
-        #@dbpath = File.expand_path(File.dirname(__FILE__) + '/../../resources/db.yaml')
+      def dbLoad(log)
+        log.debug @dbpath = File.expand_path(File.dirname(__FILE__) + '/../../resources/db.yaml')
         @dbpath = ENV['HOME'] + "/.usefuldb/db.yaml"
-        Settings.load(dbpath)
-        @data = Settings.data
+        UsefulDB::Settings.load(@dbpath, log)
+        @data = UsefulDB::Settings.data
       end
       
       
       # Return the number of elements in the database.
-      def count()
+      def count(log)
         if @data["db"].count == 0
           raise EmptyDB, "The DB is currently empty."
         else
@@ -51,39 +52,42 @@ module UsefulDB
       
       
       # Add an element to the database
-      def add(hash, opts)
+      def add(hash, log)
         if @data["db"].include?(hash) then raise EntryInDB, "Entry already in the DB"; else @data["db"] << hash; end    
       end
   
       
       # Remove an element from the database
-      def remove(key, opts)
+      def remove(key, log)
         if @data["db"].count == 0
           raise EmptyDB, "You cannot call the remove function on an empty Database!"
         elsif @data["db"].count <= key || key < 0
           raise KeyOutOfBounds, "Key is out of bounds and therefore does not exist in the DB"
         else
-          @data.delete_at(key) 
+          @data["db"].delete_at(key) 
         end
       end
       
       
       # Setup the system for the first time
-      def setup()
+      def setup(log)
+        log.debug "Checking to see if the database is already installed"
         resourceDir = ENV['HOME'] + "/.usefuldb/"
+        log.debug resourceDir
         if File.directory?(resourceDir) 
-          # The folder already exists, do nothing
+          log.debug "The folder already exists, do nothing"
         else
-          # We need to create this folder and install the DB there.
+          log.debug "Creating ~/.usefuldb/ and installing the DB there."
           FileUtils.mkdir(resourceDir)
           dbpath = File.expand_path(File.dirname(__FILE__) + '/../../resources/db.yaml')
           FileUtils.cp(dbpath, resourceDir)
+          log.debug "Database copied to ~/.usefuldb/db.yaml"
         end
       end
       
       
       # Search for a tag in the DB
-      def search(tag)
+      def search(tag, log)
         msg = "Searching the database for tag: " + tag + "\n"
         
         @data["db"].each do |db|
@@ -98,7 +102,7 @@ module UsefulDB
       
       
       # List out all elements in the DB
-      def list
+      def list(log)
         return @data["db"]
       end
 

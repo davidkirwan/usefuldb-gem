@@ -1,5 +1,10 @@
 usefuldb gem CHANGELOG
 
+## Version 0.0.8
+- Fixed issue introduced in 0.0.7 with deleting elements 
+- Added logging to many parts of the UsefulDB system to aid debugging, and provide support for verbose mode 
+- Updated main_test.rb to match the updated interface, and consolidated test methods
+
 ## Version 0.0.7
 - Updated layout of the yaml database file to include description field for each entry
 - Updated layout of the yaml database file to include a version field

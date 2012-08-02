@@ -1,7 +1,9 @@
 #!/usr/bin/env ruby
 
+# Require statements
 require 'usefuldb'
 require 'optparse'
+require 'logger'
 
 #####################################################
 def addColour(text, colour_code)
@@ -14,11 +16,20 @@ def yellow(text); addColour(text, 33); end
 def blue(text); addColour(text, 34); end
 #####################################################
 
+# Variables
+
+# Create the Logger instance
+log = Logger.new(STDOUT)
+#log.level = Logger::DEBUG
+#log.level = Logger::INFO
+log.level = Logger::WARN
+
+
 options = {}
 optparse = nil
 
 # Setup the system for use
-UsefulDB.setup
+UsefulDB.setup(log)
 
 begin
   optparse = OptionParser.new do |opts|
@@ -31,22 +42,27 @@ UsefulDB - a simple command and URL database (#{UsefulDB::Version})
 WELCOME
   
     opts.on('-a', '--add', "Add an entry to the database") do |arg|
+      log.debug "add parameter passed"
       options[:a] = arg
     end
     
     opts.on('-d', '--delete', "Delete an entry from the database") do |arg|
+      log.debug "delete parameter passed"
       options[:d] = arg
     end
     
     opts.on('-l', '--list', "List all entries in the database") do |arg|
+      log.debug "list parameter passed"
       options[:l] = arg
     end
     
     opts.on('-v', '--verbose', "Runs the system in verbose mode") do |arg|
+      log.debug "verbose parameter passed"
       options[:v] = arg
     end
     
     opts.on('-h', '--help', "Print out this message") do |arg|
+      log.debug "help parameter passed"
       puts opts
       exit
     end
@@ -54,41 +70,52 @@ WELCOME
   end.parse!
 rescue OptionParser::InvalidOption => e
   puts e.message + "\n\nUseage: usefuldb -h or --help for help using the system"
+  log.fatal e.message
   exit()
 end
 
 #############################################################################
 
 # Checking for flag parameters
+log.debug "Checking for parameters"
 if options.empty?
-  # No parameters of any kind were passed
+  log.debug "No flag parameters were passed"
+  log.debug "Checking if ARGV is empty"
   if ARGV.empty?
+    log.debug "No parameters of any kind were passed, exiting"
     puts "Useage: usefuldb -h or --help for help using the system"
     exit()
-  
-  # At least one non flag parameter was passed
   else
-    puts green("Launching the search system:")
-    UsefulDB::GUI.search(ARGV)
+    log.debug "At least one non flag parameter was passed, launching the search system"
+    log.debug ARGV
+    puts "Launching the search system:"
+    UsefulDB::GUI.search(ARGV, log)
   end
 
-# Some flags parameters were passed
 else
-  #puts options
+  log.debug "Some flags parameters were passed"
+  log.debug options
   
-  if options[:a] # The -a or --add flag check
-    puts green("Launching the add system:")
-    UsefulDB::GUI.add(options)
+  if options[:v]
+    log.level = Logger::INFO
+  end
+  
+  if options[:a]
+    log.debug "The -a or --add flag is true, launching add system"
+    puts "Launching the add system:"
+    UsefulDB::GUI.add(log)
   
   elsif options[:l]
+    log.debug "The -l or --list flag is true, launching the list system"
     puts green("Launching the list system:")
-    UsefulDB::GUI.list
+    UsefulDB::GUI.list(log)
     
-  elsif options[:d] # The -d or --delete flag check
+  elsif options[:d]
+    log.debug "The -d or --delete flag is true, launching the delete system"
     puts "Run the delete system:"
-    UsefulDB::GUI.remove(options)
-    
+    UsefulDB::GUI.remove(log)
   end
+  
 end
 
 
