@@ -1,4 +1,4 @@
-## Readme - v0.0.8
+## Readme - v0.0.9
 
 ### Install
 To run the unit tests use the following rake target
@@ -9,3 +9,6 @@ If you cloned the repository, or downloaded this gem as an archive, you can inst
 
 This gem is also stored on rubygems.org and can be installed with the following command:
 gem install usefuldb
+
+### Usage
+To run the system, simply call the _usefuldb_ script at the commandline for instructions

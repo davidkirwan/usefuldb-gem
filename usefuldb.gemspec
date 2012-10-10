@@ -1,15 +1,16 @@
 # -*- encoding: utf-8 -*-
 #$:.push File.expand_path("../lib", __FILE__)
-require File.expand_path('../lib/usefuldb/version', __FILE__)
+require 'rubygems'
 require 'rake'
+
 
 
 Gem::Specification.new do |s|
   s.name        = 'usefuldb'
-  s.version     = UsefulDB::Version
+  s.version     = '0.0.9'
   s.date        = '2012-08-01'
-  s.summary     = "A simple commands and URLs database for storage of useful information"
-  s.description = "usefuldb is a simple database which is designed to store useful commands and URLs"
+  s.summary     = "usefuldb - simple database for storage of useful commands and or urls."
+  s.description = "Accessible through a commandline script, UsefulDB allows the user to store information about a useful command or useful url"
   s.authors     = ["David Kirwan"]
   s.email       = ['00346128@mail.wit.ie']
   s.require_paths = ["lib"]
@@ -23,7 +24,7 @@ Gem::Specification.new do |s|
   s.executables << 'usefuldb'
   s.post_install_message = <<-INSTALL
   
-usefuldb - simple commands and or urls database for storage of useful information.
+usefuldb - simple database for storage of useful commands and or urls.
 
 usefuldb is released under the creative commons attribution-sharealike 3.0 unported (cc by-sa 3.0) licence.
 for more information see: http://creativecommons.org/licenses/by-sa/3.0/
