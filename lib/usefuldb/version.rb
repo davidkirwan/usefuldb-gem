@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'usefuldb'
 
 module UsefulDB
@@ -7,7 +8,7 @@ module UsefulDB
       
       MAJOR = 0 unless defined? MAJOR
       MINOR = 0 unless defined? MINOR
-      PATCH = 8 unless defined? PATCH
+      PATCH = 9 unless defined? PATCH
 
       def to_s
         [MAJOR, MINOR, PATCH].compact.join('.')

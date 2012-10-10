@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 # Require statements
+require 'rubygems'
 require 'usefuldb'
 require 'optparse'
 require 'logger'
@@ -27,6 +28,7 @@ log.level = Logger::WARN
 
 options = {}
 optparse = nil
+welcome = nil
 
 # Setup the system for use
 UsefulDB.setup(log)
@@ -38,6 +40,9 @@ begin
 UsefulDB - a simple command and URL database (#{UsefulDB::Version})
 
    Useage:  usefuldb <searchtag1> <searchtag2> .. <searchtagN>
+            usefuldb -a
+            usefuldb -d
+            usefuldb -l
 
 WELCOME
   
@@ -61,15 +66,18 @@ WELCOME
       options[:v] = arg
     end
     
+    welcome = opts
+    
     opts.on('-h', '--help', "Print out this message") do |arg|
       log.debug "help parameter passed"
       puts opts
       exit
     end
-    
+
   end.parse!
 rescue OptionParser::InvalidOption => e
-  puts e.message + "\n\nUseage: usefuldb -h or --help for help using the system"
+  puts "[" + e.message + "} Please see the following for usage instructions: \n"
+  puts welcome
   log.fatal e.message
   exit()
 end
@@ -83,7 +91,7 @@ if options.empty?
   log.debug "Checking if ARGV is empty"
   if ARGV.empty?
     log.debug "No parameters of any kind were passed, exiting"
-    puts "Useage: usefuldb -h or --help for help using the system"
+    puts welcome
     exit()
   else
     log.debug "At least one non flag parameter was passed, launching the search system"
