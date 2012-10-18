@@ -2,6 +2,8 @@ usefuldb gem CHANGELOG
 
 ## Version 0.0.10
 - Updated gemspec to latest date
+- Updated README
+- Updated lib/usefuldb/version.rb
 
 ## Version 0.0.9
 - Added require statements for rubygems to ensure the system will work on ruby 1.8.7
