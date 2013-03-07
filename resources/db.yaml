@@ -1,42 +1,652 @@
 ---
-version: 0.0.7
+version: 0.0.9
 db:
-  - tag:
-    - install
-    - rubygems
-    - website
-    - usefuldb
-    value: http://rubygems.org/usefuldb
-    description: Website URL for the usefuldb gem
-  - tag:
-    - search
-    - find
-    - website
-    - google
-    value: http://www.google.com
-    description: Google a major search engine
-  - tag:
-    - git
-    - add
-    value: git add <path>
-    description: Requesting git add files to the current git branch
-  - tag:
-    - git
-    - commit
-    value: git commit -m 'commit message'
-    description: Committing the files along with a commit message to the current git branch
-  - tag:
-    - git
-    - push
-    value: git push origin <branch>
-    description: Requesting git upload the commited changes to the remote branch
-  - tag:
-    - git
-    - merge
-    value: git merge --no-ff <branch>
-    description: Command to merge the specified branch into the current branch
-  - tag:
-    - git
-    - checkout
-    value: git checkout <branch>
-    description: Checkout the specified branch
+- tag:
+  - install
+  - rubygems
+  - website
+  - usefuldb
+  value: http://rubygems.org/usefuldb
+  description: Website URL for the usefuldb gem
+- tag:
+  - search
+  - find
+  - website
+  - google
+  value: http://www.google.com
+  description: Google a major search engine
+- tag:
+  - git
+  - add
+  value: git add <path>
+  description: Requesting git add files to the current git branch
+- tag:
+  - git
+  - commit
+  value: git commit -m 'commit message'
+  description: Committing the files along with a commit message to the current git
+    branch
+- tag:
+  - git
+  - push
+  value: git push origin <branch>
+  description: Requesting git upload the commited changes to the remote branch
+- tag:
+  - git
+  - merge
+  value: git merge --no-ff <branch>
+  description: Command to merge the specified branch into the current branch
+- tag:
+  - git
+  - checkout
+  value: git checkout <branch>
+  description: Checkout the specified branch
+- tag:
+  - git
+  - tag
+  - tagging
+  value: git tag -a v0.0.0 -m 'Version 0.0.0'
+  description: Creating a git tag for a specific commit point in the branch
+- tag:
+  - process
+  - network
+  - netstat
+  value: netstat --lepunt
+  description: Show the TCP and UDP ports being listened on and if you run this command
+    as root you get the process/user associated
+- tag:
+  - github
+  - git
+  - repository
+  value: https://github.com/davidkirwan
+  description: My github URL
+- tag:
+  - git
+  - rm
+  - cache
+  value: git rm -r --cached
+  description: Delete all files in the directory not currently managed by git
+- tag:
+  - find
+  - delete
+  - log
+  - turnover
+  value: find <logpath> -mtime + 7 -exec rm {} \;
+  description: Delete files older than a week in logpath
+- tag:
+  - find
+  - delete
+  - mp3
+  - turnover
+  value: find music -name '*.mp3' -mtime +365 -a -size +10M -ls
+  description: Find all mp3 files in the music directory which are over 10 MB in size
+    and at least a year old
+- tag:
+  - ruboto
+  - ruby
+  - jruby
+  - android
+  value: http://ruboto.org/
+  description: Ruby on Android devices through JRuby
+- tag:
+  - cd
+  - change
+  - directory
+  - previous
+  value: cd -
+  description: Returns to the previous directory you were in
+- tag:
+  - timesquare
+  - cam
+  - 4chan
+  value: http://www.earthcam.com/usa/newyork/timessquare/
+  description: The webcam pointing at the postcard stand in Timessquare in NY 4chan
+    is always knocking down
+- tag:
+  - irssi
+  - irc
+  - client
+  - chat
+  value: irssi
+  description: irssi is a console IRC client
+- tag:
+  - irssi
+  - new
+  - window
+  value: /window new split
+  description: Creates a new window in split screen mode. Switch between them then
+    like /window <num>
+- tag:
+  - mount
+  - web-dav
+  - davfs
+  value: sudo mount.davfs -o uid=user,gid=group https://path.to.web/dav/ /path/to/local/mount/
+  description: How to localy mount a web-dav file system
+- tag:
+  - irssi
+  - stick
+  - window
+  - splitscreen
+  value: ! '/window stick #'
+  description: Sticks a hidden window to the newly created split screen
+- tag:
+  - sshfs
+  - ssh
+  - mount
+  - remote
+  value: sshfs user@remotehost:/remotedir localdir/
+  description: Mount a remote folder locally using sshfs
+- tag:
+  - date
+  - convert
+  - epoch
+  - human
+  value: date -d @728737200
+  description: Turn a Unix epoch time back into a human readable date
+- tag:
+  - git
+  - log
+  - pretty
+  - output
+  value: git log --pretty='%cn|%cd|%s'
+  description: Print out the git log in a pretty formatted version
+- tag:
+  - espeak
+  - speak
+  - ip
+  - address
+  value: hostname -i |cut -d' ' -f1 | sed 's/\./ dot /g' | espeak
+  description: Have the device speak its IP Address, perhaps handy for the Raspberry
+    Pi or the Ardtweeno
+- tag:
+  - ruby
+  - date
+  - hours
+  value: DateTime.now + (22/24.0)
+  description: Adding 22 hours to the current date using Ruby's date library
+- tag:
+  - ruby
+  - date
+  - minutes
+  value: DateTime.now + (22/1440.0)
+  description: Adding 22 minutes to the current date using Ruby's date library
+- tag:
+  - ruby
+  - date
+  - seconds
+  value: DateTime.now + (22/86400.0)
+  description: Add 22 seconds to the current date using Ruby's date library
+- tag:
+  - ubuntu
+  - hardware
+  - interface
+  - mapping
+  value: /etc/udev/rules.d/70-persistent-net.rules
+  description: On Debian?/Ubuntu systems this file contains the hardware to interface
+    mapping
+- tag:
+  - environment
+  - variables
+  - path
+  value: export PATH=/usr/for/example-1.0/bin:$PATH
+  description: Sample means to setup a directory on your PATH environment variable
+    in *NIX
+- tag:
+  - sudo
+  - previous
+  - command
+  value: sudo !!
+  description: Sudo !! repeats the previous command but preceeds it with sudo
+- tag:
+  - mount
+  - network
+  - share
+  value: sudo mount -t cifs -o username=uname,password=pass,uid=uname,gid=uname //shares/Backups
+    /local/path
+  description: Mount a network share to a local path
+- tag:
+  - R
+  - load
+  - script
+  value: source("commands.R")
+  description: Imports another R script
+- tag:
+  - scp
+  - remote
+  - copy
+  value: scp user@host:~/path/to/source/file /path/to/destination/file
+  description: Copy a remote file to the local destination
+- tag:
+  - scp
+  - remote
+  - copy
+  value: scp *.txt user@remote.server.com:/home/user/
+  description: Copy a local file to the remote server
+- tag:
+  - tr
+  - remove
+  - 'null'
+  value: tr -d '\000' < file1 > file2
+  description: Remove all null characters from a file as its copied from file1 to
+    file2
+- tag:
+  - tar
+  - create
+  - archive
+  value: tar -zcf archivename.tar.gz /path/to/directory/to/archive/
+  description: Create a tar file from the contents of directory, then zip the results
+- tag:
+  - tar
+  - unzip
+  - uncompress
+  - archive
+  value: tar -zxf archivename.tar.gz
+  description: Uncompresses and untars the target gzipped tarball
+- tag:
+  - java
+  - code
+  - coverage
+  - emma
+  value: http://emma.sourceforge.net
+  description: Emma is a code coverage tool, which produces statistics which give
+    an indication how well your code is covered by unit tests
+- tag:
+  - java
+  - code
+  - coverage
+  - cobertura
+  value: http://cobertura.sourceforge.net/
+  description: Cobertura is a code coverage tool, which produces statistics which
+    give an indication how well your code is covered by unit tests
+- tag:
+  - asciidoc
+  - a2x
+  - website
+  value: http://www.methods.co.nz/asciidoc/
+  description: The asciidoc website
+- tag:
+  - cron
+  - usage
+  - tutorial
+  - website
+  value: http://adminschoice.com/crontab-quick-reference
+  description: Quick reference website for the cron system
+- tag:
+  - css
+  - tutorial
+  - quick
+  - reference
+  - website
+  value: http://www.webmasterworld.com/css/3169395.htm
+  description: CSS tutorial and quick reference website
+- tag:
+  - sort
+  - unique
+  - strings
+  value: sort <file> | uniq
+  description: Sort the unique entries in a file
+- tag:
+  - sort
+  - unique
+  - strings
+  - git
+  - log
+  value: git log --pretty='%cn' | sort | uniq
+  description: Find all the users who have commited data to a git repository, and
+    print a sorted unique list
+- tag:
+  - git
+  - remote
+  - origin
+  - change
+  - set-url
+  value: git remote set-url origin git@git.whatever.com:derp.git
+  description: Change the remote origin url for a git repository
+- tag:
+  - ditaa
+  - convert
+  - ascii
+  - image
+  value: http://ditaa.sorceforge.net/
+  description: Ditaa is a small commandline java utility for converting diagrams drawn
+    in asciiart to bitmap images
+- tag:
+  - asciiflow
+  - ascii
+  - art
+  - editor
+  value: http://www.asciiflow.com/
+  description: Website with an editor you can draw asciiart in.
+- tag:
+  - requestb.in
+  - webhooks
+  - inspect
+  value: http://requestb.in
+  description: RequestBin lets you create a URL that will collect requests made to
+    it, then let you inspet them in a human friendly way.
+- tag:
+  - git
+  - delete
+  - remote
+  - branch
+  value: git push origin :branch-name
+  description: Delete a remote branch on origin
+- tag:
+  - git
+  - delete
+  - remote
+  - branch
+  value: git push origin --delete branch-name
+  description: Delete a remote branch on origin
+- tag:
+  - git
+  - remote
+  - prune
+  - origin
+  value: git remote prune origin
+  description: Removes tracking branches whose remote branches have been removed already.
+- tag:
+  - git
+  - website
+  - reference
+  value: http://www.gitguys.com/topics/
+  description: Good reference website for git
+- tag:
+  - git
+  - set
+  - upstream
+  value: git branch --set-upstream branch-name origin/branch-name
+  description: Configures git to automatically pull/fetch from the origin/branch-name
+    rather than having to type the full thing out
+- tag:
+  - rails
+  - ruby
+  - mongodb
+  - orm
+  value: --orm=mongo_mapper
+  description: When working with ruby on rails and mongodb, you can set the database
+    orm using this command
+- tag:
+  - ruby
+  - setter
+  - getter
+  - attr_accessor
+  value: attr_accessor
+  description: The automatic setter getter system built into Ruby
+- tag:
+  - apache
+  - http
+  - path
+  value: /srv/http/
+  description: Default location of the apache public HTTP folder on Archlinux
+- tag:
+  - prolog
+  - load
+  - file
+  value: reconsult('/path/to/file')
+  description: To load a file in the SWIPL commandline prolog interpreter, we can
+    use the reconsult() method
+- tag:
+  - apache
+  - webbapps
+  - directory
+  value: /usr/share/webapps/
+  description: Path to the Apache HTTPD's webapp directory
+- tag:
+  - word
+  - count
+  - terminal
+  - useful
+  value: wc -w <file>
+  description: To count the number of words in a file we can use this command
+- tag:
+  - commandline
+  - arduino
+  - ide
+  - firmware
+  value: http://inotool.org
+  description: Commandline toolkit for working with Arduino hardware.
+- tag:
+  - zip
+  - folder
+  - linux
+  value: zip -9 -r <zip file> <folder name>
+  description: Use -9 for best compression, works fine with Windows compression tool
+- tag:
+  - zip
+  - folder
+  - linux
+  value: zip archivefile1 *
+  description: Creates an archive file named archivefile1.zip from the contents of
+    the current directory, ignoring files beginning with .
+- tag:
+  - vim
+  - find
+  - replace
+  - all
+  value: ':%s/find/replace/g'
+  description: Find all occurances of 'find' and replace with 'replace' in currently
+    opened file
+- tag:
+  - ls
+  - sort
+  - date
+  - reverse
+  value: ls -ltr
+  description: Sort directory listing by modified date
+- tag:
+  - gnome
+  - image
+  - viewer
+  value: eog <filename>
+  description: Open the Gnome Image Viewer utility
+- tag:
+  - ubuntu
+  - resolv.conf
+  - dns
+  - file
+  value: sudo vim /etc/resolv.conf
+  description: Add nameserver 192.168.0.1 to add your router to this list of DNS servers
+- tag:
+  - ruby
+  - constructor
+  - initialize
+  value: def initialize
+  description: The ruby constructor
+- tag:
+  - git
+  - push
+  - tags
+  - remote
+  value: git push --tags
+  description: Pushes the locally stored tags to the remote repository
+- tag:
+  - git
+  - log
+  - tag
+  value: git log v0.0.10
+  description: Will return the git log information and therefore the commit hash etc
+    for a particular git tag
+- tag:
+  - git
+  - list
+  - tag
+  - tags
+  value: git tag
+  description: List the tags currently in this git repository
+- tag:
+  - git
+  - log
+  - tag
+  value: git log <commithash>..<commithash>
+  description: Print the commits between the first and second
+- tag:
+  - mount
+  - nexus
+  - nexus7
+  - linux
+  value: sudo mtpfs -o allow_other /media/Nexus7
+  description: Mount the Nexus 7 Tablet in Linux
+- tag:
+  - bash
+  - append
+  - variable
+  value: VARIABLENAME+=shittoappend
+  description: Append a string to a variable in bash
+- tag:
+  - archlinux
+  - arch
+  - linux
+  - pacman
+  - list
+  - packages
+  - package
+  value: pacman -Q
+  description: Pacman lists the currently installed packages
+- tag:
+  - archlinux
+  - arch
+  - linux
+  - pacman
+  - upgrade
+  - package
+  - packages
+  value: pacman -U <packagename>
+  description: Upgrade a package to the version specified by parameter
+- tag:
+  - archlinux
+  - arch
+  - linux
+  - pacman
+  - uninstall
+  - remove
+  - packages
+  - package
+  value: pacman -R <packagename>
+  description: Remove an installed package using pacman
+- tag:
+  - archlinux
+  - arch
+  - linux
+  - pacman
+  - system
+  - upgrade
+  value: pacman -Syu
+  description: Upgrade the packages installed on the system
+- tag:
+  - linux
+  - screen
+  - command
+  - window
+  - manager
+  - detach
+  value: ctrl-a d
+  description: Inside a screen process ctrl-a to access the screen, and d to detach
+- tag:
+  - linux
+  - screen
+  - command
+  - window
+  - manager
+  - list
+  - detached
+  - screens
+  - detach
+  value: screen -ls
+  description: Lists all detached screens on the system
+- tag:
+  - linux
+  - screen
+  - command
+  - window
+  - manager
+  - reattach
+  - detach
+  - detached
+  - screens
+  value: screen -r <detachedsession>
+  description: Reattach a detached session to the current window
+- tag:
+  - git
+  - push
+  - tags
+  - tag
+  - remote
+  value: git push --tags
+  description: Push local tags to the remote origin
+- tag:
+  - git
+  - rename
+  - branch
+  value: git branch -m <oldname> <newname>
+  description: Rename a local branch from <oldname> to <newname>
+- tag:
+  - virtualenv
+  - venv
+  - virtual
+  - environment
+  value: virtualenv venv --distribute
+  description: Install a virtualenv environment at the current path
+- tag:
+  - count
+  - code
+  - lines
+  - loc
+  value: find . -name '*.rb' | xargs wc -l
+  description: Count all the lines of code recursivly in the specified directory for
+    a specific file type
+- tag:
+  - sed
+  - find
+  - replace
+  - file
+  value: sed -i 's/ugly/beautiful/g' /path/to/file.txt
+  description: Find and replace all instances of ugly with beautiful in file.txt using
+    the sed Linux tool
+- tag:
+  - pacman
+  - archlinux
+  - package
+  - search
+  value: pacman -Ss <string> <string2> .. <stringN>
+  description: Search for packages in the Archlinux repository
+- tag:
+  - ruby
+  - iOS
+  - mac
+  - rubymotion
+  value: www.rubymotion.com
+  description: Ruby on iOS devices - 100% compatible with the app store best practices
+- tag:
+  - tcpdump
+  - listen
+  - interface
+  - networking
+  value: tcpdump -XX -n -i wlan0
+  description: Listen to all data being recieved on a specified interface
+- tag:
+  - linux
+  - screen
+  - command
+  - window
+  - add
+  value: ctrl-a c
+  description: Create a new window inside the screen process
+- tag:
+  - archlinux
+  - pacman
+  - clear
+  - cache
+  - empty
+  value: sudo pacman -Sc
+  description: Deletes all old packages in the pacman cache while keeping a copy of
+    all locally installed packages
+- tag:
+  - git
+  - show
+  - remote
+  - url
+  - info
+  value: git remote show origin
+  description: Prints status about the current git repository including the remote
+    URL
