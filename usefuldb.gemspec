@@ -1,5 +1,3 @@
-# -*- encoding: utf-8 -*-
-#$:.push File.expand_path("../lib", __FILE__)
 require 'rubygems'
 require 'rake'
 
@@ -7,12 +5,12 @@ require 'rake'
 
 Gem::Specification.new do |s|
   s.name        = 'usefuldb'
-  s.version     = '0.0.11'
-  s.date        = '2013-03-12'
+  s.version     = '0.0.12'
+  s.date        = '2012-04-06'
   s.summary     = "usefuldb - simple database for storage of useful commands and or urls."
   s.description = "Accessible through a commandline script, UsefulDB allows the user to store information about a useful command or useful url"
   s.authors     = ["David Kirwan"]
-  s.email       = ['00346128@mail.wit.ie']
+  s.email       = ['davidkirwanirl@gmail.com']
   s.require_paths = ["lib"]
   s.files       = FileList['lib/**/*.rb',
                       'bin/*',

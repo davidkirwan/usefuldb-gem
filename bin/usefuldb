@@ -22,8 +22,8 @@ def blue(text); addColour(text, 34); end
 # Create the Logger instance
 log = Logger.new(STDOUT)
 #log.level = Logger::DEBUG
-#log.level = Logger::INFO
-log.level = Logger::WARN
+log.level = Logger::INFO
+#log.level = Logger::WARN
 
 
 options = {}
@@ -40,9 +40,7 @@ begin
 UsefulDB - a simple command and URL database (#{UsefulDB::Version})
 
    Useage:  usefuldb <searchtag1> <searchtag2> .. <searchtagN>
-            usefuldb -a
-            usefuldb -d
-            usefuldb -l
+
 
 WELCOME
   
@@ -61,10 +59,6 @@ WELCOME
       options[:l] = arg
     end
     
-    opts.on('-v', '--verbose', "Runs the system in verbose mode") do |arg|
-      log.debug "verbose parameter passed"
-      options[:v] = arg
-    end
     
     welcome = opts
     
@@ -104,9 +98,6 @@ else
   log.debug "Some flags parameters were passed"
   log.debug options
   
-  if options[:v]
-    log.level = Logger::INFO
-  end
   
   if options[:a]
     log.debug "The -a or --add flag is true, launching add system"
