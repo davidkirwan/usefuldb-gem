@@ -1,4 +1,4 @@
-## Readme - v0.0.11
+## Readme - v0.0.12
 
 ### Install
 To run the unit tests use the following rake target
@@ -11,4 +11,5 @@ This gem is also stored on rubygems.org and can be installed with the following 
 gem install usefuldb
 
 ### Usage
-To run the system, simply call the _usefuldb_ script at the commandline for instructions
+To run the system, simply call the _usefuldb_ script at the commandline for instructions, alternatively visit the
+wiki at https://github.com/davidkirwan/usefuldb-gem/wiki
