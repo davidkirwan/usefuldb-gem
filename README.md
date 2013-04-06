@@ -1,4 +1,4 @@
-## Readme - v0.0.10
+## Readme - v0.0.11
 
 ### Install
 To run the unit tests use the following rake target
