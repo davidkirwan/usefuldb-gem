@@ -65,6 +65,11 @@ module UsefulDB
       def autoUpgrade(log)
         log.warn "autoUpgrade Method executing"
         @data["version"] = UsefulDB::Version.to_s
+        resource_path = File.join(File.dirname(__FILE__), "../../resources/db.yaml")
+        @resourceData = YAML.load(File.open(resource_path))
+        
+        log.warn "Updating local database with default entries"
+        @data["db"] = (@data["db"] | @resourceData["db"]).uniq
       end
       
     end

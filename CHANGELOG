@@ -1,7 +1,8 @@
 usefuldb gem CHANGELOG
 
-## Version 0.0.12
-- Removed verbose mode, set it as default instead
+## Version 0.1.0
+- Upon updating UsefulDB to a newer version of the gem, it automatically now merges default DB entries into 
+the local database
 
 ## Version 0.0.11
 - Updated UsefulDB::Version

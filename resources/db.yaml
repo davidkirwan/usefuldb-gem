@@ -1,5 +1,5 @@
 ---
-version: 0.0.9
+version: 0.1.0
 db:
 - tag:
   - install
@@ -127,7 +127,7 @@ db:
   - stick
   - window
   - splitscreen
-  value: ! '/window stick #'
+  value: '/window stick #'
   description: Sticks a hidden window to the newly created split screen
 - tag:
   - sshfs
@@ -366,6 +366,18 @@ db:
   value: --orm=mongo_mapper
   description: When working with ruby on rails and mongodb, you can set the database
     orm using this command
+- tag:
+  - vpn
+  - routing
+  - setup
+  value: 'sudo route del default wlan0/eth0 # sudo route add default dev ppp0'
+  description: Delete the default route, and route all traffic through the ppp0 connection
+- tag:
+  - vpn
+  - routing
+  - restore
+  value: 'sudo route del default ppp0 # sudo route add default dev wlan0'
+  description: Delete the ppp0 route and restore the default
 - tag:
   - ruby
   - setter
@@ -650,3 +662,177 @@ db:
   value: git remote show origin
   description: Prints status about the current git repository including the remote
     URL
+- tag:
+  - tightvnc
+  - remote
+  - desktop
+  - server
+  value: vncserver -geometry 1024x600 :1
+  description: Run the tightvnc server with a geometry of 1024x600 on window :1
+- tag:
+  - tightvnc
+  - kill
+  - server
+  value: vncserver -kill :1
+  description: Kill the tightvnc server running on window :1
+- tag:
+  - seneca
+  - younger
+  - quote
+  - religion
+  value: Religion is regarded by the common people as true, by the wise as false,
+    and by rulers as useful
+  description: Rather amusing quote by Seneca the Younger
+- tag:
+  - list
+  - zip
+  - file
+  - contents
+  value: unzip -l <ziparchive>
+  description: Lists the contents of a Zip Archive file
+- tag:
+  - oracle
+  - display
+  - table
+  - names
+  - list
+  - database
+  value: select owner, table_name from dba_tables;
+  description: Assuming you have the access, this command will list the tables in
+    the database along with what user owns them
+- tag:
+  - block
+  - data
+  - size
+  - windows
+  value: 'fsutil fsinfo ntfsinfo c:'
+  description: Returns file system information for the passed parameter
+- tag:
+  - cd
+  - format
+  - cdrw
+  - blank
+  value: cdrecord blank=fast dev=/dev/sr0
+  description: Format a CDRW
+- tag:
+  - dvd
+  - format
+  - dvdrw
+  - blank
+  value: dvd+rw-format blank=fast dev=/dev/sr0
+  description: Format a DVDRW
+- tag:
+  - git
+  - reset
+  - head
+  - revert
+  - commit
+  - undo
+  value: git reset --soft HEAD^
+  description: Undo a commit, then allows you to fix the issue
+- tag:
+  - git
+  - list
+  - remote
+  - remotes
+  value: git remote -v
+  description: List the remotes currently attached to a repository
+- tag:
+  - webrtc
+  - html5
+  - video
+  - chat
+  value: https://6-dot-apprtc.appspot.com
+  description: Two way video and voice communication with WebRTC
+- tag:
+  - ruby
+  - main
+  - gemrc
+  - gem
+  value: /etc/gemrc
+  description: Location of the systemwide gemrc configuration file on Archlinux
+- tag:
+  - git
+  - add
+  - upstream
+  - remote
+  - remotes
+  value: git remote add <upstream-name> http://path.to.git
+  description: Add a remote upstream to a repository
+- tag:
+  - git
+  - branch
+  - create
+  - add
+  - make
+  value: git branch <branchname>
+  description: Create a branch called <branchname>
+- tag:
+  - ncat
+  - redirect
+  - port
+  - service
+  - netcat
+  - nc
+  value: sudo ncat --sh-exec "ncat 10.0.0.1 2000" -l 2000 -t --keep-open
+  description: Redirect telnet connections made to localhost 2000 to 10.0.0.1
+    2000
+- tag:
+  - ip
+  - tuntap
+  - tunnel
+  - virtual
+  - interface
+  - networking
+  - network
+  value: ip tuntap add dev tun0 mode tap user david
+  description: Create a tuntap interface called tun0
+- tag:
+  - ip
+  - tuntap
+  - tunnel
+  - virtual
+  - interfae
+  - networking
+  - network
+  value: ip tuntap del dev tun0 mode tap
+  description: Delete a tuntap interface named tun0
+- tag:
+  - ip
+  - set
+  - interface
+  - network
+  - networking
+  - add
+  value: ip addr add 192.168.1.1/24 dev eth0
+  description: Add the IP address 192.168.1.1 and subnet mask 255.255.255.0 to interface
+    eth0
+- tag:
+  - pacman
+  - archlinux
+  - arch
+  - linux
+  - delete
+  - old
+  - packages
+  - package
+  value: sudo pacman -Sc
+  description: Delete old unused packages from the /var/cache/pacman/pkg/
+- tag:
+  - sota
+  - irc
+  - server
+  - shroud
+  - avatar
+  value: irc.arg-irc.net
+  description: IRC Channel for the Shroud of the Avatar
+- tag:
+  - synergy
+  - mouse
+  - server
+  - client
+  - share
+  - keyboard
+  value: synergy-foss.org
+  description: 'Share a single keyboard and mouse across multiple computers: Linux,
+    Mac and Windows'
