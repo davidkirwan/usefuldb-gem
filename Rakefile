@@ -2,7 +2,7 @@ require 'rubygems'
 require 'bundler'
 Bundler::GemHelper.install_tasks
 
-task :default => 'menu'
+task :default => :test
 
 task :menu do
   puts welcomeMsg = <<-MSG
