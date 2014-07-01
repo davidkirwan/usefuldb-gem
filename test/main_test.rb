@@ -23,8 +23,6 @@ def blue(text); addColour(text, 34); end
 
 
 class UsefulDBTest < Test::Unit::TestCase
-
-  include Rack::Test::Methods
   
   attr_accessor :log
   
