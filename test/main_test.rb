@@ -4,8 +4,6 @@ require 'fileutils'
 require 'usefuldb'
 require 'logger'
 
-ENV['RACK_ENV'] = 'test'
-
 log = nil
 
 #####################################################
