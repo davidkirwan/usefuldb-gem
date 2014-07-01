@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'test/unit'
-require 'rack/test'
 require 'fileutils'
 require 'usefuldb'
 require 'logger'
