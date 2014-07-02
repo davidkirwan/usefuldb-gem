@@ -31,7 +31,7 @@ class UsefulDBTest < Test::Unit::TestCase
       @log.level = Logger::INFO
     end
     
-    UsefulDB::dbLoad(@log)
+    UsefulDB::dbLoad(@log, {:test=>true})
   end
 
   def teardown
