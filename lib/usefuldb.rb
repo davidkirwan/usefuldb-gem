@@ -26,8 +26,8 @@ module UsefulDB
       UsefulDB::UsefulUtils.dbSave(log)
     end
     
-    def dbLoad(log)
-      UsefulDB::UsefulUtils.dbLoad(log)
+    def dbLoad(log, options={})
+      UsefulDB::UsefulUtils.dbLoad(log, options)
     end
     
     def search(args, log)
