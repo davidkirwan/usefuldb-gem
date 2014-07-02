@@ -22,10 +22,14 @@ module UsefulDB
       
       
       # Save the database to disk
-      def dbSave(log)
+      def dbSave(log, options={})
         if @dbpath.nil?
           log.debug @dbpath = File.expand_path(File.dirname(__FILE__) + '/../../resources/db.yaml')
-          @dbpath = ENV['HOME'] + "/.usefuldb/db.yaml"
+          if options[:test]
+            @dbpath = File.expand_path(File.dirname(__FILE__) + '/../../resources/db.yaml')
+          else
+            @dbpath = ENV['HOME'] + "/.usefuldb/db.yaml"
+          end
           UsefulDB::Settings.save(@data, @dbpath, log)
         else
           UsefulDB::Settings.save(@data, @dbpath, log)
