@@ -34,9 +34,14 @@ module UsefulDB
       
       
       # Load the database from disk
-      def dbLoad(log)
+      def dbLoad(log, options={})
         log.debug @dbpath = File.expand_path(File.dirname(__FILE__) + '/../../resources/db.yaml')
-        @dbpath = ENV['HOME'] + "/.usefuldb/db.yaml"
+        if options[:test]
+          @dbpath = File.expand_path(File.dirname(__FILE__) + '/../../resources/db.yaml')
+        else
+          @dbpath = ENV['HOME'] + "/.usefuldb/db.yaml"
+        end
+        
         UsefulDB::Settings.load(@dbpath, log)
         @data = UsefulDB::Settings.data
       end
