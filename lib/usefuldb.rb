@@ -22,8 +22,8 @@ module UsefulDB
       UsefulDB::UsefulUtils.remove(key, log)
     end
     
-    def dbSave(log)
-      UsefulDB::UsefulUtils.dbSave(log)
+    def dbSave(log, options={})
+      UsefulDB::UsefulUtils.dbSave(log, options)
     end
     
     def dbLoad(log, options={})
