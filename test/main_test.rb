@@ -73,8 +73,8 @@ class UsefulDBTest < Test::Unit::TestCase
     
     begin
       @log.info "Write the DB structure back to disk and then reload"
-      UsefulDB.dbSave(@log)
-      UsefulDB.dbLoad(@log)
+      UsefulDB.dbSave(@log, {:test=>true})
+      UsefulDB.dbLoad(@log, {:test=>true})
       
       @log.info "Check the total number of entries in the DB is still #{tempCount} " +
       assert_equal(startingCount + 1, UsefulDB.count(@log)).to_s
@@ -83,8 +83,8 @@ class UsefulDBTest < Test::Unit::TestCase
       UsefulDB::remove(startingCount, @log)
       
       @log.info "Write the DB structure back to disk and then reload"
-      UsefulDB.dbSave(@log)
-      UsefulDB.dbLoad(@log)
+      UsefulDB.dbSave(@log, {:test=>true})
+      UsefulDB.dbLoad(@log, {:test=>true})
       
       @log.info "Check the total number of entries in the DB is back to #{startingCount} " +
       assert_equal(startingCount, UsefulDB.count(@log)).to_s
