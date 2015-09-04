@@ -55,12 +55,6 @@ db:
   description: Show the TCP and UDP ports being listened on and if you run this command
     as root you get the process/user associated
 - tag:
-  - github
-  - git
-  - repository
-  value: https://github.com/davidkirwan
-  description: My github URL
-- tag:
   - git
   - rm
   - cache
@@ -113,7 +107,7 @@ db:
   - irssi
   - new
   - window
-  value: /window new split
+  value: "/window new split"
   description: Creates a new window in split screen mode. Switch between them then
     like /window <num>
 - tag:
@@ -127,7 +121,7 @@ db:
   - stick
   - window
   - splitscreen
-  value: '/window stick #'
+  value: "/window stick #"
   description: Sticks a hidden window to the newly created split screen
 - tag:
   - sshfs
@@ -181,7 +175,7 @@ db:
   - hardware
   - interface
   - mapping
-  value: /etc/udev/rules.d/70-persistent-net.rules
+  value: "/etc/udev/rules.d/70-persistent-net.rules"
   description: On Debian?/Ubuntu systems this file contains the hardware to interface
     mapping
 - tag:
@@ -248,7 +242,7 @@ db:
   - coverage
   - emma
   value: http://emma.sourceforge.net
-  description: Emma is a code coverage tool, which produces statistics which give
+  description: Emma is a Java code coverage tool, which produces statistics which give
     an indication how well your code is covered by unit tests
 - tag:
   - java
@@ -256,7 +250,7 @@ db:
   - coverage
   - cobertura
   value: http://cobertura.sourceforge.net/
-  description: Cobertura is a code coverage tool, which produces statistics which
+  description: Cobertura is a Java code coverage tool, which produces statistics which
     give an indication how well your code is covered by unit tests
 - tag:
   - asciidoc
@@ -363,20 +357,20 @@ db:
   - ruby
   - mongodb
   - orm
-  value: --orm=mongo_mapper
+  value: "--orm=mongo_mapper"
   description: When working with ruby on rails and mongodb, you can set the database
     orm using this command
 - tag:
   - vpn
   - routing
   - setup
-  value: 'sudo route del default wlan0/eth0 # sudo route add default dev ppp0'
+  value: 'sudo route del default wlan0/eth0 ; sudo route add default dev ppp0'
   description: Delete the default route, and route all traffic through the ppp0 connection
 - tag:
   - vpn
   - routing
   - restore
-  value: 'sudo route del default ppp0 # sudo route add default dev wlan0'
+  value: 'sudo route del default ppp0 ; sudo route add default dev wlan0'
   description: Delete the ppp0 route and restore the default
 - tag:
   - ruby
@@ -389,7 +383,7 @@ db:
   - apache
   - http
   - path
-  value: /srv/http/
+  value: "/srv/http/"
   description: Default location of the apache public HTTP folder on Archlinux
 - tag:
   - prolog
@@ -402,7 +396,7 @@ db:
   - apache
   - webbapps
   - directory
-  value: /usr/share/webapps/
+  value: "/usr/share/webapps/"
   description: Path to the Apache HTTPD's webapp directory
 - tag:
   - word
@@ -436,7 +430,7 @@ db:
   - find
   - replace
   - all
-  value: ':%s/find/replace/g'
+  value: ":%s/find/replace/g"
   description: Find all occurances of 'find' and replace with 'replace' in currently
     opened file
 - tag:
@@ -732,6 +726,31 @@ db:
   description: Undo a commit, then allows you to fix the issue
 - tag:
   - git
+  - rebase
+  - change
+  - history
+  - url
+  - website
+  value: http://git-scm.com/book/en/Git-Tools-Rewriting-History#Squashing-Commits
+  description: URL to the git book detailing information about changing the history
+- tag:
+  - git
+  - add
+  - upstream
+  - remote
+  - remotes
+  value: git remote add <upstream-name> git@git.path.to.git.com/
+  description: Add a remote upstream to a repository
+- tag:
+  - mysql
+  - connect
+  - database
+  - cli
+  value: mysql -u root -p -h 10.0.0.1
+  description: Connect to a MySQL DB running on 10.0.0.1 with username root and password
+    entered at the prompt
+- tag:
+  - git
   - list
   - remote
   - remotes
@@ -749,7 +768,7 @@ db:
   - main
   - gemrc
   - gem
-  value: /etc/gemrc
+  value: "/etc/gemrc"
   description: Location of the systemwide gemrc configuration file on Archlinux
 - tag:
   - git
@@ -775,8 +794,7 @@ db:
   - netcat
   - nc
   value: sudo ncat --sh-exec "ncat 10.0.0.1 2000" -l 2000 -t --keep-open
-  description: Redirect telnet connections made to localhost 2000 to 10.0.0.1
-    2000
+  description: Redirect telnet connections made to localhost 2000 to 10.0.0.1 2000
 - tag:
   - ip
   - tuntap
@@ -836,3 +854,454 @@ db:
   value: synergy-foss.org
   description: 'Share a single keyboard and mouse across multiple computers: Linux,
     Mac and Windows'
+- tag:
+  - netstat
+  - port
+  - find
+  - program
+  - application
+  - using
+  value: netstat -tulpn
+  description: List the applications currently using a port
+- tag:
+  - show
+  - mount
+  - nfs
+  - linux
+  - nfs-common
+  value: showmount -e server-ip-address
+  description: See the list of all NFS shares on a server
+- tag:
+  - list
+  - smb
+  - samba
+  - shares
+  - list
+  - smbclient
+  value: smbclient -L smb-server-ip -U username
+  description: List the smb shares on a server
+- tag:
+  - cifs
+  - automount
+  - fstab
+  - mount
+  value: "//192.168.44.100/share   /path_to/mount   cifs   username=server_user,password=secret,_netdev
+    \  0 0"
+  description: Mount the share on path, once the network has been activated on bootup
+    using fstab
+- tag:
+  - gitlab
+  - backup
+  - rake
+  - command
+  - task
+  value: sudo -u git -H bundle exec rake RAILS_ENV=production gitlab:backup:create
+    --trace
+  description: Run the gitlab backup command
+- tag:
+  - gitlab
+  - restore
+  - rake
+  - command
+  - task
+  value: sudo -u gitlab -H bundle exec rake RAILS_ENV=production gitlab:backup:restore
+    BACKUP=/home/gitlab/gitlab/tmp/backups/path/to/file
+  description: Restore a previously created gitlab backup file
+- tag:
+  - zabbix
+  - add
+  - linux
+  - client
+  - install
+  value: https://www.zabbix.com/wiki/howto/monitor/os/linux/agentinstallonlinux
+  description: Instructions on how to install and configure a Zabbix Linux client
+- tag:
+  - linux
+  - network
+  - configure
+  - txqueuelen
+  - tx
+  - queue
+  - length
+  value: http://www.cyberciti.biz/faq/change-txqueuelen/
+  description: Information regarding the configuration of the TX Queue Length for
+    a network interface
+- tag:
+  - linux
+  - configuration
+  - configure
+  - ulimit
+  - open
+  - files
+  - max
+  value: http://stackoverflow.com/questions/34588/how-do-i-change-the-number-of-open-files-limit-in-linux
+  description: Website about configuration of the max number of open files on Linux
+- tag:
+  - linux
+  - file
+  - security
+  - limits
+  - ulimit
+  - max
+  - open
+  - files
+  - file
+  value: "/etc/security/limits.conf"
+  description: On Ubuntu the following file is the location in which to set hard and
+    soft file limits
+- tag:
+  - linux
+  - limit
+  - max
+  - increase
+  - configure
+  - configuration
+  - network
+  - tcpip
+  - connections
+  - connection
+  value: http://stackoverflow.com/questions/410616/increasing-the-maximum-number-of-tcp-ip-connections-in-linux
+  description: Website detailing instructions on where to increase the maximum number
+    of tcp/ip connections on Linux
+- tag:
+  - virtual
+  - switch
+  - vswitch
+  - website
+  - distributed
+  value: http://openvswitch.org/
+  description: Website for the Open VSwitch a production quality multilayer virtual
+    switch
+- tag:
+  - nginx
+  - directory
+  - listings
+  - listing
+  - auto
+  - configure
+  value: autoindex on;
+  description: In a location, place the above to enable automatic directory listings
+    on an Nginx server
+- tag:
+  - disk
+  - parition
+  - information
+  - type
+  - linux
+  value: blkid
+  description: Print disk partition information
+- tag:
+  - rsync
+  - remote
+  - copy
+  - folder
+  - directory
+  - server
+  value: rsync -avz -e "ssh -i id_rsa" user@host.com:/path/to/files /local/path/to/copy
+  description: Using rsync login over SSH using the ssh key id_rsa and copy files
+    from one path to a local path
+- tag:
+  - linux
+  - date
+  - epoch
+  - seconds
+  value: date +%s
+  description: Get the number of seconds since the epoch using the Linux date command
+- tag:
+  - linux
+  - newest
+  - file
+  - list
+  - find
+  value: ls -ABrt1 --group-directories-first | tail -n1
+  description: Find the last updated file in a directory
+- tag:
+  - vim
+  - default
+  - editor
+  - git
+  - set
+  value: git config --global core.editor "vim"
+  description: Set Vim as the default editor for Git commits
+- tag:
+  - git
+  - create
+  - orphan
+  - branch
+  value: git checkout --orphan newbranch
+  description: Create an orphan branch in git
+- tag:
+  - mysql
+  - restore
+  - database
+  - cli
+  value: mysql -u root -p database_name < database_name.sql
+  description: Restore a MySQL/MariaDB database from a raw SQL dump
+- tag:
+  - timezone
+  - time
+  - zone
+  - epoch
+  - converter
+  value: http://www.epochconverter.com/epoch/timezones.php
+  description: Website containing information about taking timezones into account
+    when working with the Epoch date
+- tag:
+  - curl
+  - post
+  - request
+  value: curl -d '{"test":50}' -X POST -H Content-Type:application/json http://10.0.0.1/rest/api
+  description: Send a post request using curl
+- tag:
+  - curl
+  - get
+  - request
+  value: curl -X GET http://10.0.0.1/rest/api?test=50
+  description: Send a get request using curl
+- tag:
+  - sudo
+  - sudoers
+  - arch
+  - linux
+  - add
+  - user
+  value: gpasswd -a YOUR_USER_NAME sudoers
+  description: Add a username to the sudoers group providing the /etc/sudoers file
+    contains "%sudoers    ALL=(ALL) ALL"
+- tag:
+  - ssh
+  - port
+  - forward
+  value: ssh -L <local port>:<remote computer>:<remote port> <user>@<remote ip>
+  description: Port forward using SSH tunneling
+- tag:
+  - cron
+  - crontab
+  - usage
+  - example
+  value: 0 0,6,12,18 * * * /path/to/mycommand
+  description: Run the /path/to/mycommand every 6 hours in a cron job
+- tag:
+  - ssh
+  - tunnel
+  - proxy
+  - socks
+  value: ssh dkirwan@ssh.tssg.org -D 1080 -p 443
+  description: Proxy all localhost:1080 traffic to ssh.tssg.org:443
+- tag:
+  - ls
+  - sort
+  - size
+  - files
+  - linux
+  value: ls -lh --sort=size
+  description: Sort files by size in Linux
+- tag:
+  - git
+  - delete
+  - file
+  - source
+  - control
+  value: git rm --cached <file>
+  description: Delete a file which is currently under source control, but keep the
+    file
+- tag:
+  - pacman
+  - search
+  - package
+  - packages
+  - find
+  - list
+  - installed
+  value: pacman -Q
+  description: List the installed packages on Arch Linux
+- tag:
+  - set
+  - timezone
+  - ubuntu
+  - debian
+  - time
+  value: sudo dpkg-reconfigure tzdata
+  description: Configure the timezone in Ubuntu
+- tag:
+  - netcat
+  - ncat
+  - redirect
+  - port
+  - serial
+  - device
+  value: netcat -l <port> > /dev/ttyUSB0 < /dev/ttyUSB0
+  description: Redirect a serial device to an IP Port
+- tag:
+  - github
+  - atom
+  - command
+  - list
+  value: ctrl + shift + p
+  description: Brings up the Command Palette field
+- tag:
+  - tcpdump
+  - network
+  - test
+  - troubleshoot
+  - ipv4
+  - ipv6
+  - net
+  value: sudo tcpdump -i eth0 not src or dst net 10.0.0.0/24
+  description: View tcp packets on interface eth0 ignoring src and dest for network
+    10.0.0.0/24
+- tag:
+  - telinit
+  - init
+  - level
+  - change
+  - linux
+  value: sudo telinit 1
+  description: Move an Ubuntu Linux distribution to what ordinarially would be init
+    lvl 3 on a proper distro
+- tag:
+  - telinit
+  - init
+  - level
+  - change
+  - linux
+  - graphical
+  value: sudo telinit 2
+  description: Move an Ubuntu Linux distribution to what ordinarially would be init
+    lvl 5
+- tag:
+  - delete
+  - files
+  - file
+  - old
+  - find
+  - linux
+  value: find . -name '*.log' -mtime +30 -a -ls -exec rm -rf {} \;
+  description: Delete log files in the current directory older than 30 days
+- tag:
+  - apt-cache
+  - apt
+  - cache
+  - search
+  - debian
+  - package
+  - packages
+  value: apt-cache show <packagename>
+  description: Search for an installed packagename and print its information
+- tag:
+  - sed
+  - select
+  - line
+  - lines
+  - file
+  value: sed -n '0~4p' somefile
+  description: Select every 4th line from a file starting at line 0
+- tag:
+  - vim
+  - delete
+  - lines
+  - matching
+  - match
+  value: g/^pattern$/d
+  description: Delete all lines in the current file matching the pattern regex
+- tag:
+  - copypasta
+  - copypaste
+  - pasta
+  value: What the fuck did you just fucking say about me, you little bitch? I’ll have
+    you know I graduated top of my class in the Navy Seals, and I’ve been involved
+    in numerous secret raids on Al-Quaeda, and I have over 300 confirmed kills. I
+    am trained in gorilla warfare and I’m the top sniper in the entire US armed forces.
+    You are nothing to me but just another target. I will wipe you the fuck out with
+    precision the likes of which has never been seen before on this Earth, mark my
+    fucking words. You think you can get away with saying that shit to me over the
+    Internet? Think again, fucker. As we speak I am contacting my secret network of
+    spies across the USA and your IP is being traced right now so you better prepare
+    for the storm, maggot. The storm that wipes out the pathetic little thing you
+    call your life. You’re fucking dead, kid. I can be anywhere, anytime, and I can
+    kill you in over seven hundred ways, and that’s just with my bare hands. Not only
+    am I extensively trained in unarmed combat, but I have access to the entire arsenal
+    of the United States Marine Corps and I will use it to its full extent to wipe
+    your miserable ass off the face of the continent, you little shit. If only you
+    could have known what unholy retribution your little “clever” comment was about
+    to bring down upon you, maybe you would have held your fucking tongue. But you
+    couldn’t, you didn’t, and now you’re paying the price, you goddamn idiot. I will
+    shit fury all over you and you will drown in it. You’re fucking dead, kiddo.
+  description: What did you say about me you little bitch?
+- tag:
+  - eirgrid
+  - EirGrid
+  - tso
+  - TSO
+  - electricity
+  value: EirGrid is a Transmission System Operator in the Republic of Ireland
+  description: ''
+- tag:
+  - git
+  - commit
+  - comment
+  - ammend
+  - change
+  - edit
+  value: git commit --amend
+  description: Amend a git commit message
+- tag:
+  - git
+  - nopush
+  - no-push
+  - no_push
+  - stop
+  - push
+  value: git remote set-url --push origin no_push
+  description: Prevent pushes to origin
+- tag:
+  - git
+  - patch
+  - create
+  - apply
+  - make
+  - diff
+  value: https://ariejan.net/2009/10/26/how-to-create-and-apply-a-patch-with-git/
+  description: Website explaining how to create and apply git patches
+- tag:
+  - git
+  - amend
+  - author
+  - commit
+  value: git commit --amend --author="Author Name <email@address.com>"
+  description: Amend the author of the commit
+- tag:
+  - make
+  - patch
+  - diff
+  value: diff -u file1 file2 > patch.name
+  description: Create a patch, when applied, will synchronise file1 with file2
+- tag:
+  - patch
+  - diff
+  - apply
+  value: patch < file.patch
+  description: Apply a patch created earlier using diff
+- tag:
+  - vim
+  - search
+  - append
+  - find
+  value: ":%s/pattern/&append/g"
+  description: Find all instances of pattern in a file and append append using Vim
+- tag:
+  - joke
+  - feminist
+  - vegan
+  - atheist
+  value: A feminist, an atheist, and a vegan walk into a bar. Everyone knew because
+    they immediately told EVERBODY.
+  description: Triggered
+- tag:
+  - ruby
+  - nonalphanumeric
+  - characters
+  - string
+  - remove
+  value: ".gsub(/[^0-9a-z ]/i, '')"
+  description: remove all non-alphanumeric characters from a Ruby String
