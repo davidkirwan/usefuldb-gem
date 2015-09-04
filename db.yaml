@@ -1,0 +1,1307 @@
+---
+version: 0.1.0
+db:
+- tag:
+  - install
+  - rubygems
+  - website
+  - usefuldb
+  value: http://rubygems.org/usefuldb
+  description: Website URL for the usefuldb gem
+- tag:
+  - search
+  - find
+  - website
+  - google
+  value: http://www.google.com
+  description: Google a major search engine
+- tag:
+  - git
+  - add
+  value: git add <path>
+  description: Requesting git add files to the current git branch
+- tag:
+  - git
+  - commit
+  value: git commit -m 'commit message'
+  description: Committing the files along with a commit message to the current git
+    branch
+- tag:
+  - git
+  - push
+  value: git push origin <branch>
+  description: Requesting git upload the commited changes to the remote branch
+- tag:
+  - git
+  - merge
+  value: git merge --no-ff <branch>
+  description: Command to merge the specified branch into the current branch
+- tag:
+  - git
+  - checkout
+  value: git checkout <branch>
+  description: Checkout the specified branch
+- tag:
+  - git
+  - tag
+  - tagging
+  value: git tag -a v0.0.0 -m 'Version 0.0.0'
+  description: Creating a git tag for a specific commit point in the branch
+- tag:
+  - process
+  - network
+  - netstat
+  value: netstat --lepunt
+  description: Show the TCP and UDP ports being listened on and if you run this command
+    as root you get the process/user associated
+- tag:
+  - git
+  - rm
+  - cache
+  value: git rm -r --cached
+  description: Delete all files in the directory not currently managed by git
+- tag:
+  - find
+  - delete
+  - log
+  - turnover
+  value: find <logpath> -mtime + 7 -exec rm {} \;
+  description: Delete files older than a week in logpath
+- tag:
+  - find
+  - delete
+  - mp3
+  - turnover
+  value: find music -name '*.mp3' -mtime +365 -a -size +10M -ls
+  description: Find all mp3 files in the music directory which are over 10 MB in size
+    and at least a year old
+- tag:
+  - ruboto
+  - ruby
+  - jruby
+  - android
+  value: http://ruboto.org/
+  description: Ruby on Android devices through JRuby
+- tag:
+  - cd
+  - change
+  - directory
+  - previous
+  value: cd -
+  description: Returns to the previous directory you were in
+- tag:
+  - timesquare
+  - cam
+  - 4chan
+  value: http://www.earthcam.com/usa/newyork/timessquare/
+  description: The webcam pointing at the postcard stand in Timessquare in NY 4chan
+    is always knocking down
+- tag:
+  - irssi
+  - irc
+  - client
+  - chat
+  value: irssi
+  description: irssi is a console IRC client
+- tag:
+  - irssi
+  - new
+  - window
+  value: "/window new split"
+  description: Creates a new window in split screen mode. Switch between them then
+    like /window <num>
+- tag:
+  - mount
+  - web-dav
+  - davfs
+  value: sudo mount.davfs -o uid=user,gid=group https://path.to.web/dav/ /path/to/local/mount/
+  description: How to localy mount a web-dav file system
+- tag:
+  - irssi
+  - stick
+  - window
+  - splitscreen
+  value: "/window stick #"
+  description: Sticks a hidden window to the newly created split screen
+- tag:
+  - sshfs
+  - ssh
+  - mount
+  - remote
+  value: sshfs user@remotehost:/remotedir localdir/
+  description: Mount a remote folder locally using sshfs
+- tag:
+  - date
+  - convert
+  - epoch
+  - human
+  value: date -d @728737200
+  description: Turn a Unix epoch time back into a human readable date
+- tag:
+  - git
+  - log
+  - pretty
+  - output
+  value: git log --pretty='%cn|%cd|%s'
+  description: Print out the git log in a pretty formatted version
+- tag:
+  - espeak
+  - speak
+  - ip
+  - address
+  value: hostname -i |cut -d' ' -f1 | sed 's/\./ dot /g' | espeak
+  description: Have the device speak its IP Address, perhaps handy for the Raspberry
+    Pi or the Ardtweeno
+- tag:
+  - ruby
+  - date
+  - hours
+  value: DateTime.now + (22/24.0)
+  description: Adding 22 hours to the current date using Ruby's date library
+- tag:
+  - ruby
+  - date
+  - minutes
+  value: DateTime.now + (22/1440.0)
+  description: Adding 22 minutes to the current date using Ruby's date library
+- tag:
+  - ruby
+  - date
+  - seconds
+  value: DateTime.now + (22/86400.0)
+  description: Add 22 seconds to the current date using Ruby's date library
+- tag:
+  - ubuntu
+  - hardware
+  - interface
+  - mapping
+  value: "/etc/udev/rules.d/70-persistent-net.rules"
+  description: On Debian?/Ubuntu systems this file contains the hardware to interface
+    mapping
+- tag:
+  - environment
+  - variables
+  - path
+  value: export PATH=/usr/for/example-1.0/bin:$PATH
+  description: Sample means to setup a directory on your PATH environment variable
+    in *NIX
+- tag:
+  - sudo
+  - previous
+  - command
+  value: sudo !!
+  description: Sudo !! repeats the previous command but preceeds it with sudo
+- tag:
+  - mount
+  - network
+  - share
+  value: sudo mount -t cifs -o username=uname,password=pass,uid=uname,gid=uname //shares/Backups
+    /local/path
+  description: Mount a network share to a local path
+- tag:
+  - R
+  - load
+  - script
+  value: source("commands.R")
+  description: Imports another R script
+- tag:
+  - scp
+  - remote
+  - copy
+  value: scp user@host:~/path/to/source/file /path/to/destination/file
+  description: Copy a remote file to the local destination
+- tag:
+  - scp
+  - remote
+  - copy
+  value: scp *.txt user@remote.server.com:/home/user/
+  description: Copy a local file to the remote server
+- tag:
+  - tr
+  - remove
+  - 'null'
+  value: tr -d '\000' < file1 > file2
+  description: Remove all null characters from a file as its copied from file1 to
+    file2
+- tag:
+  - tar
+  - create
+  - archive
+  value: tar -zcf archivename.tar.gz /path/to/directory/to/archive/
+  description: Create a tar file from the contents of directory, then zip the results
+- tag:
+  - tar
+  - unzip
+  - uncompress
+  - archive
+  value: tar -zxf archivename.tar.gz
+  description: Uncompresses and untars the target gzipped tarball
+- tag:
+  - java
+  - code
+  - coverage
+  - emma
+  value: http://emma.sourceforge.net
+  description: Emma is a Java code coverage tool, which produces statistics which give
+    an indication how well your code is covered by unit tests
+- tag:
+  - java
+  - code
+  - coverage
+  - cobertura
+  value: http://cobertura.sourceforge.net/
+  description: Cobertura is a Java code coverage tool, which produces statistics which
+    give an indication how well your code is covered by unit tests
+- tag:
+  - asciidoc
+  - a2x
+  - website
+  value: http://www.methods.co.nz/asciidoc/
+  description: The asciidoc website
+- tag:
+  - cron
+  - usage
+  - tutorial
+  - website
+  value: http://adminschoice.com/crontab-quick-reference
+  description: Quick reference website for the cron system
+- tag:
+  - css
+  - tutorial
+  - quick
+  - reference
+  - website
+  value: http://www.webmasterworld.com/css/3169395.htm
+  description: CSS tutorial and quick reference website
+- tag:
+  - sort
+  - unique
+  - strings
+  value: sort <file> | uniq
+  description: Sort the unique entries in a file
+- tag:
+  - sort
+  - unique
+  - strings
+  - git
+  - log
+  value: git log --pretty='%cn' | sort | uniq
+  description: Find all the users who have commited data to a git repository, and
+    print a sorted unique list
+- tag:
+  - git
+  - remote
+  - origin
+  - change
+  - set-url
+  value: git remote set-url origin git@git.whatever.com:derp.git
+  description: Change the remote origin url for a git repository
+- tag:
+  - ditaa
+  - convert
+  - ascii
+  - image
+  value: http://ditaa.sorceforge.net/
+  description: Ditaa is a small commandline java utility for converting diagrams drawn
+    in asciiart to bitmap images
+- tag:
+  - asciiflow
+  - ascii
+  - art
+  - editor
+  value: http://www.asciiflow.com/
+  description: Website with an editor you can draw asciiart in.
+- tag:
+  - requestb.in
+  - webhooks
+  - inspect
+  value: http://requestb.in
+  description: RequestBin lets you create a URL that will collect requests made to
+    it, then let you inspet them in a human friendly way.
+- tag:
+  - git
+  - delete
+  - remote
+  - branch
+  value: git push origin :branch-name
+  description: Delete a remote branch on origin
+- tag:
+  - git
+  - delete
+  - remote
+  - branch
+  value: git push origin --delete branch-name
+  description: Delete a remote branch on origin
+- tag:
+  - git
+  - remote
+  - prune
+  - origin
+  value: git remote prune origin
+  description: Removes tracking branches whose remote branches have been removed already.
+- tag:
+  - git
+  - website
+  - reference
+  value: http://www.gitguys.com/topics/
+  description: Good reference website for git
+- tag:
+  - git
+  - set
+  - upstream
+  value: git branch --set-upstream branch-name origin/branch-name
+  description: Configures git to automatically pull/fetch from the origin/branch-name
+    rather than having to type the full thing out
+- tag:
+  - rails
+  - ruby
+  - mongodb
+  - orm
+  value: "--orm=mongo_mapper"
+  description: When working with ruby on rails and mongodb, you can set the database
+    orm using this command
+- tag:
+  - vpn
+  - routing
+  - setup
+  value: 'sudo route del default wlan0/eth0 ; sudo route add default dev ppp0'
+  description: Delete the default route, and route all traffic through the ppp0 connection
+- tag:
+  - vpn
+  - routing
+  - restore
+  value: 'sudo route del default ppp0 ; sudo route add default dev wlan0'
+  description: Delete the ppp0 route and restore the default
+- tag:
+  - ruby
+  - setter
+  - getter
+  - attr_accessor
+  value: attr_accessor
+  description: The automatic setter getter system built into Ruby
+- tag:
+  - apache
+  - http
+  - path
+  value: "/srv/http/"
+  description: Default location of the apache public HTTP folder on Archlinux
+- tag:
+  - prolog
+  - load
+  - file
+  value: reconsult('/path/to/file')
+  description: To load a file in the SWIPL commandline prolog interpreter, we can
+    use the reconsult() method
+- tag:
+  - apache
+  - webbapps
+  - directory
+  value: "/usr/share/webapps/"
+  description: Path to the Apache HTTPD's webapp directory
+- tag:
+  - word
+  - count
+  - terminal
+  - useful
+  value: wc -w <file>
+  description: To count the number of words in a file we can use this command
+- tag:
+  - commandline
+  - arduino
+  - ide
+  - firmware
+  value: http://inotool.org
+  description: Commandline toolkit for working with Arduino hardware.
+- tag:
+  - zip
+  - folder
+  - linux
+  value: zip -9 -r <zip file> <folder name>
+  description: Use -9 for best compression, works fine with Windows compression tool
+- tag:
+  - zip
+  - folder
+  - linux
+  value: zip archivefile1 *
+  description: Creates an archive file named archivefile1.zip from the contents of
+    the current directory, ignoring files beginning with .
+- tag:
+  - vim
+  - find
+  - replace
+  - all
+  value: ":%s/find/replace/g"
+  description: Find all occurances of 'find' and replace with 'replace' in currently
+    opened file
+- tag:
+  - ls
+  - sort
+  - date
+  - reverse
+  value: ls -ltr
+  description: Sort directory listing by modified date
+- tag:
+  - gnome
+  - image
+  - viewer
+  value: eog <filename>
+  description: Open the Gnome Image Viewer utility
+- tag:
+  - ubuntu
+  - resolv.conf
+  - dns
+  - file
+  value: sudo vim /etc/resolv.conf
+  description: Add nameserver 192.168.0.1 to add your router to this list of DNS servers
+- tag:
+  - ruby
+  - constructor
+  - initialize
+  value: def initialize
+  description: The ruby constructor
+- tag:
+  - git
+  - push
+  - tags
+  - remote
+  value: git push --tags
+  description: Pushes the locally stored tags to the remote repository
+- tag:
+  - git
+  - log
+  - tag
+  value: git log v0.0.10
+  description: Will return the git log information and therefore the commit hash etc
+    for a particular git tag
+- tag:
+  - git
+  - list
+  - tag
+  - tags
+  value: git tag
+  description: List the tags currently in this git repository
+- tag:
+  - git
+  - log
+  - tag
+  value: git log <commithash>..<commithash>
+  description: Print the commits between the first and second
+- tag:
+  - mount
+  - nexus
+  - nexus7
+  - linux
+  value: sudo mtpfs -o allow_other /media/Nexus7
+  description: Mount the Nexus 7 Tablet in Linux
+- tag:
+  - bash
+  - append
+  - variable
+  value: VARIABLENAME+=shittoappend
+  description: Append a string to a variable in bash
+- tag:
+  - archlinux
+  - arch
+  - linux
+  - pacman
+  - list
+  - packages
+  - package
+  value: pacman -Q
+  description: Pacman lists the currently installed packages
+- tag:
+  - archlinux
+  - arch
+  - linux
+  - pacman
+  - upgrade
+  - package
+  - packages
+  value: pacman -U <packagename>
+  description: Upgrade a package to the version specified by parameter
+- tag:
+  - archlinux
+  - arch
+  - linux
+  - pacman
+  - uninstall
+  - remove
+  - packages
+  - package
+  value: pacman -R <packagename>
+  description: Remove an installed package using pacman
+- tag:
+  - archlinux
+  - arch
+  - linux
+  - pacman
+  - system
+  - upgrade
+  value: pacman -Syu
+  description: Upgrade the packages installed on the system
+- tag:
+  - linux
+  - screen
+  - command
+  - window
+  - manager
+  - detach
+  value: ctrl-a d
+  description: Inside a screen process ctrl-a to access the screen, and d to detach
+- tag:
+  - linux
+  - screen
+  - command
+  - window
+  - manager
+  - list
+  - detached
+  - screens
+  - detach
+  value: screen -ls
+  description: Lists all detached screens on the system
+- tag:
+  - linux
+  - screen
+  - command
+  - window
+  - manager
+  - reattach
+  - detach
+  - detached
+  - screens
+  value: screen -r <detachedsession>
+  description: Reattach a detached session to the current window
+- tag:
+  - git
+  - push
+  - tags
+  - tag
+  - remote
+  value: git push --tags
+  description: Push local tags to the remote origin
+- tag:
+  - git
+  - rename
+  - branch
+  value: git branch -m <oldname> <newname>
+  description: Rename a local branch from <oldname> to <newname>
+- tag:
+  - virtualenv
+  - venv
+  - virtual
+  - environment
+  value: virtualenv venv --distribute
+  description: Install a virtualenv environment at the current path
+- tag:
+  - count
+  - code
+  - lines
+  - loc
+  value: find . -name '*.rb' | xargs wc -l
+  description: Count all the lines of code recursivly in the specified directory for
+    a specific file type
+- tag:
+  - sed
+  - find
+  - replace
+  - file
+  value: sed -i 's/ugly/beautiful/g' /path/to/file.txt
+  description: Find and replace all instances of ugly with beautiful in file.txt using
+    the sed Linux tool
+- tag:
+  - pacman
+  - archlinux
+  - package
+  - search
+  value: pacman -Ss <string> <string2> .. <stringN>
+  description: Search for packages in the Archlinux repository
+- tag:
+  - ruby
+  - iOS
+  - mac
+  - rubymotion
+  value: www.rubymotion.com
+  description: Ruby on iOS devices - 100% compatible with the app store best practices
+- tag:
+  - tcpdump
+  - listen
+  - interface
+  - networking
+  value: tcpdump -XX -n -i wlan0
+  description: Listen to all data being recieved on a specified interface
+- tag:
+  - linux
+  - screen
+  - command
+  - window
+  - add
+  value: ctrl-a c
+  description: Create a new window inside the screen process
+- tag:
+  - archlinux
+  - pacman
+  - clear
+  - cache
+  - empty
+  value: sudo pacman -Sc
+  description: Deletes all old packages in the pacman cache while keeping a copy of
+    all locally installed packages
+- tag:
+  - git
+  - show
+  - remote
+  - url
+  - info
+  value: git remote show origin
+  description: Prints status about the current git repository including the remote
+    URL
+- tag:
+  - tightvnc
+  - remote
+  - desktop
+  - server
+  value: vncserver -geometry 1024x600 :1
+  description: Run the tightvnc server with a geometry of 1024x600 on window :1
+- tag:
+  - tightvnc
+  - kill
+  - server
+  value: vncserver -kill :1
+  description: Kill the tightvnc server running on window :1
+- tag:
+  - seneca
+  - younger
+  - quote
+  - religion
+  value: Religion is regarded by the common people as true, by the wise as false,
+    and by rulers as useful
+  description: Rather amusing quote by Seneca the Younger
+- tag:
+  - list
+  - zip
+  - file
+  - contents
+  value: unzip -l <ziparchive>
+  description: Lists the contents of a Zip Archive file
+- tag:
+  - oracle
+  - display
+  - table
+  - names
+  - list
+  - database
+  value: select owner, table_name from dba_tables;
+  description: Assuming you have the access, this command will list the tables in
+    the database along with what user owns them
+- tag:
+  - block
+  - data
+  - size
+  - windows
+  value: 'fsutil fsinfo ntfsinfo c:'
+  description: Returns file system information for the passed parameter
+- tag:
+  - cd
+  - format
+  - cdrw
+  - blank
+  value: cdrecord blank=fast dev=/dev/sr0
+  description: Format a CDRW
+- tag:
+  - dvd
+  - format
+  - dvdrw
+  - blank
+  value: dvd+rw-format blank=fast dev=/dev/sr0
+  description: Format a DVDRW
+- tag:
+  - git
+  - reset
+  - head
+  - revert
+  - commit
+  - undo
+  value: git reset --soft HEAD^
+  description: Undo a commit, then allows you to fix the issue
+- tag:
+  - git
+  - rebase
+  - change
+  - history
+  - url
+  - website
+  value: http://git-scm.com/book/en/Git-Tools-Rewriting-History#Squashing-Commits
+  description: URL to the git book detailing information about changing the history
+- tag:
+  - git
+  - add
+  - upstream
+  - remote
+  - remotes
+  value: git remote add <upstream-name> git@git.path.to.git.com/
+  description: Add a remote upstream to a repository
+- tag:
+  - mysql
+  - connect
+  - database
+  - cli
+  value: mysql -u root -p -h 10.0.0.1
+  description: Connect to a MySQL DB running on 10.0.0.1 with username root and password
+    entered at the prompt
+- tag:
+  - git
+  - list
+  - remote
+  - remotes
+  value: git remote -v
+  description: List the remotes currently attached to a repository
+- tag:
+  - webrtc
+  - html5
+  - video
+  - chat
+  value: https://6-dot-apprtc.appspot.com
+  description: Two way video and voice communication with WebRTC
+- tag:
+  - ruby
+  - main
+  - gemrc
+  - gem
+  value: "/etc/gemrc"
+  description: Location of the systemwide gemrc configuration file on Archlinux
+- tag:
+  - git
+  - add
+  - upstream
+  - remote
+  - remotes
+  value: git remote add <upstream-name> http://path.to.git
+  description: Add a remote upstream to a repository
+- tag:
+  - git
+  - branch
+  - create
+  - add
+  - make
+  value: git branch <branchname>
+  description: Create a branch called <branchname>
+- tag:
+  - ncat
+  - redirect
+  - port
+  - service
+  - netcat
+  - nc
+  value: sudo ncat --sh-exec "ncat 10.0.0.1 2000" -l 2000 -t --keep-open
+  description: Redirect telnet connections made to localhost 2000 to 10.0.0.1 2000
+- tag:
+  - ip
+  - tuntap
+  - tunnel
+  - virtual
+  - interface
+  - networking
+  - network
+  value: ip tuntap add dev tun0 mode tap user david
+  description: Create a tuntap interface called tun0
+- tag:
+  - ip
+  - tuntap
+  - tunnel
+  - virtual
+  - interfae
+  - networking
+  - network
+  value: ip tuntap del dev tun0 mode tap
+  description: Delete a tuntap interface named tun0
+- tag:
+  - ip
+  - set
+  - interface
+  - network
+  - networking
+  - add
+  value: ip addr add 192.168.1.1/24 dev eth0
+  description: Add the IP address 192.168.1.1 and subnet mask 255.255.255.0 to interface
+    eth0
+- tag:
+  - pacman
+  - archlinux
+  - arch
+  - linux
+  - delete
+  - old
+  - packages
+  - package
+  value: sudo pacman -Sc
+  description: Delete old unused packages from the /var/cache/pacman/pkg/
+- tag:
+  - sota
+  - irc
+  - server
+  - shroud
+  - avatar
+  value: irc.arg-irc.net
+  description: IRC Channel for the Shroud of the Avatar
+- tag:
+  - synergy
+  - mouse
+  - server
+  - client
+  - share
+  - keyboard
+  value: synergy-foss.org
+  description: 'Share a single keyboard and mouse across multiple computers: Linux,
+    Mac and Windows'
+- tag:
+  - netstat
+  - port
+  - find
+  - program
+  - application
+  - using
+  value: netstat -tulpn
+  description: List the applications currently using a port
+- tag:
+  - show
+  - mount
+  - nfs
+  - linux
+  - nfs-common
+  value: showmount -e server-ip-address
+  description: See the list of all NFS shares on a server
+- tag:
+  - list
+  - smb
+  - samba
+  - shares
+  - list
+  - smbclient
+  value: smbclient -L smb-server-ip -U username
+  description: List the smb shares on a server
+- tag:
+  - cifs
+  - automount
+  - fstab
+  - mount
+  value: "//192.168.44.100/share   /path_to/mount   cifs   username=server_user,password=secret,_netdev
+    \  0 0"
+  description: Mount the share on path, once the network has been activated on bootup
+    using fstab
+- tag:
+  - gitlab
+  - backup
+  - rake
+  - command
+  - task
+  value: sudo -u git -H bundle exec rake RAILS_ENV=production gitlab:backup:create
+    --trace
+  description: Run the gitlab backup command
+- tag:
+  - gitlab
+  - restore
+  - rake
+  - command
+  - task
+  value: sudo -u gitlab -H bundle exec rake RAILS_ENV=production gitlab:backup:restore
+    BACKUP=/home/gitlab/gitlab/tmp/backups/path/to/file
+  description: Restore a previously created gitlab backup file
+- tag:
+  - zabbix
+  - add
+  - linux
+  - client
+  - install
+  value: https://www.zabbix.com/wiki/howto/monitor/os/linux/agentinstallonlinux
+  description: Instructions on how to install and configure a Zabbix Linux client
+- tag:
+  - linux
+  - network
+  - configure
+  - txqueuelen
+  - tx
+  - queue
+  - length
+  value: http://www.cyberciti.biz/faq/change-txqueuelen/
+  description: Information regarding the configuration of the TX Queue Length for
+    a network interface
+- tag:
+  - linux
+  - configuration
+  - configure
+  - ulimit
+  - open
+  - files
+  - max
+  value: http://stackoverflow.com/questions/34588/how-do-i-change-the-number-of-open-files-limit-in-linux
+  description: Website about configuration of the max number of open files on Linux
+- tag:
+  - linux
+  - file
+  - security
+  - limits
+  - ulimit
+  - max
+  - open
+  - files
+  - file
+  value: "/etc/security/limits.conf"
+  description: On Ubuntu the following file is the location in which to set hard and
+    soft file limits
+- tag:
+  - linux
+  - limit
+  - max
+  - increase
+  - configure
+  - configuration
+  - network
+  - tcpip
+  - connections
+  - connection
+  value: http://stackoverflow.com/questions/410616/increasing-the-maximum-number-of-tcp-ip-connections-in-linux
+  description: Website detailing instructions on where to increase the maximum number
+    of tcp/ip connections on Linux
+- tag:
+  - virtual
+  - switch
+  - vswitch
+  - website
+  - distributed
+  value: http://openvswitch.org/
+  description: Website for the Open VSwitch a production quality multilayer virtual
+    switch
+- tag:
+  - nginx
+  - directory
+  - listings
+  - listing
+  - auto
+  - configure
+  value: autoindex on;
+  description: In a location, place the above to enable automatic directory listings
+    on an Nginx server
+- tag:
+  - disk
+  - parition
+  - information
+  - type
+  - linux
+  value: blkid
+  description: Print disk partition information
+- tag:
+  - rsync
+  - remote
+  - copy
+  - folder
+  - directory
+  - server
+  value: rsync -avz -e "ssh -i id_rsa" user@host.com:/path/to/files /local/path/to/copy
+  description: Using rsync login over SSH using the ssh key id_rsa and copy files
+    from one path to a local path
+- tag:
+  - linux
+  - date
+  - epoch
+  - seconds
+  value: date +%s
+  description: Get the number of seconds since the epoch using the Linux date command
+- tag:
+  - linux
+  - newest
+  - file
+  - list
+  - find
+  value: ls -ABrt1 --group-directories-first | tail -n1
+  description: Find the last updated file in a directory
+- tag:
+  - vim
+  - default
+  - editor
+  - git
+  - set
+  value: git config --global core.editor "vim"
+  description: Set Vim as the default editor for Git commits
+- tag:
+  - git
+  - create
+  - orphan
+  - branch
+  value: git checkout --orphan newbranch
+  description: Create an orphan branch in git
+- tag:
+  - mysql
+  - restore
+  - database
+  - cli
+  value: mysql -u root -p database_name < database_name.sql
+  description: Restore a MySQL/MariaDB database from a raw SQL dump
+- tag:
+  - timezone
+  - time
+  - zone
+  - epoch
+  - converter
+  value: http://www.epochconverter.com/epoch/timezones.php
+  description: Website containing information about taking timezones into account
+    when working with the Epoch date
+- tag:
+  - curl
+  - post
+  - request
+  value: curl -d '{"test":50}' -X POST -H Content-Type:application/json http://10.0.0.1/rest/api
+  description: Send a post request using curl
+- tag:
+  - curl
+  - get
+  - request
+  value: curl -X GET http://10.0.0.1/rest/api?test=50
+  description: Send a get request using curl
+- tag:
+  - sudo
+  - sudoers
+  - arch
+  - linux
+  - add
+  - user
+  value: gpasswd -a YOUR_USER_NAME sudoers
+  description: Add a username to the sudoers group providing the /etc/sudoers file
+    contains "%sudoers    ALL=(ALL) ALL"
+- tag:
+  - ssh
+  - port
+  - forward
+  value: ssh -L <local port>:<remote computer>:<remote port> <user>@<remote ip>
+  description: Port forward using SSH tunneling
+- tag:
+  - cron
+  - crontab
+  - usage
+  - example
+  value: 0 0,6,12,18 * * * /path/to/mycommand
+  description: Run the /path/to/mycommand every 6 hours in a cron job
+- tag:
+  - ssh
+  - tunnel
+  - proxy
+  - socks
+  value: ssh dkirwan@ssh.tssg.org -D 1080 -p 443
+  description: Proxy all localhost:1080 traffic to ssh.tssg.org:443
+- tag:
+  - ls
+  - sort
+  - size
+  - files
+  - linux
+  value: ls -lh --sort=size
+  description: Sort files by size in Linux
+- tag:
+  - git
+  - delete
+  - file
+  - source
+  - control
+  value: git rm --cached <file>
+  description: Delete a file which is currently under source control, but keep the
+    file
+- tag:
+  - pacman
+  - search
+  - package
+  - packages
+  - find
+  - list
+  - installed
+  value: pacman -Q
+  description: List the installed packages on Arch Linux
+- tag:
+  - set
+  - timezone
+  - ubuntu
+  - debian
+  - time
+  value: sudo dpkg-reconfigure tzdata
+  description: Configure the timezone in Ubuntu
+- tag:
+  - netcat
+  - ncat
+  - redirect
+  - port
+  - serial
+  - device
+  value: netcat -l <port> > /dev/ttyUSB0 < /dev/ttyUSB0
+  description: Redirect a serial device to an IP Port
+- tag:
+  - github
+  - atom
+  - command
+  - list
+  value: ctrl + shift + p
+  description: Brings up the Command Palette field
+- tag:
+  - tcpdump
+  - network
+  - test
+  - troubleshoot
+  - ipv4
+  - ipv6
+  - net
+  value: sudo tcpdump -i eth0 not src or dst net 10.0.0.0/24
+  description: View tcp packets on interface eth0 ignoring src and dest for network
+    10.0.0.0/24
+- tag:
+  - telinit
+  - init
+  - level
+  - change
+  - linux
+  value: sudo telinit 1
+  description: Move an Ubuntu Linux distribution to what ordinarially would be init
+    lvl 3 on a proper distro
+- tag:
+  - telinit
+  - init
+  - level
+  - change
+  - linux
+  - graphical
+  value: sudo telinit 2
+  description: Move an Ubuntu Linux distribution to what ordinarially would be init
+    lvl 5
+- tag:
+  - delete
+  - files
+  - file
+  - old
+  - find
+  - linux
+  value: find . -name '*.log' -mtime +30 -a -ls -exec rm -rf {} \;
+  description: Delete log files in the current directory older than 30 days
+- tag:
+  - apt-cache
+  - apt
+  - cache
+  - search
+  - debian
+  - package
+  - packages
+  value: apt-cache show <packagename>
+  description: Search for an installed packagename and print its information
+- tag:
+  - sed
+  - select
+  - line
+  - lines
+  - file
+  value: sed -n '0~4p' somefile
+  description: Select every 4th line from a file starting at line 0
+- tag:
+  - vim
+  - delete
+  - lines
+  - matching
+  - match
+  value: g/^pattern$/d
+  description: Delete all lines in the current file matching the pattern regex
+- tag:
+  - copypasta
+  - copypaste
+  - pasta
+  value: What the fuck did you just fucking say about me, you little bitch? I’ll have
+    you know I graduated top of my class in the Navy Seals, and I’ve been involved
+    in numerous secret raids on Al-Quaeda, and I have over 300 confirmed kills. I
+    am trained in gorilla warfare and I’m the top sniper in the entire US armed forces.
+    You are nothing to me but just another target. I will wipe you the fuck out with
+    precision the likes of which has never been seen before on this Earth, mark my
+    fucking words. You think you can get away with saying that shit to me over the
+    Internet? Think again, fucker. As we speak I am contacting my secret network of
+    spies across the USA and your IP is being traced right now so you better prepare
+    for the storm, maggot. The storm that wipes out the pathetic little thing you
+    call your life. You’re fucking dead, kid. I can be anywhere, anytime, and I can
+    kill you in over seven hundred ways, and that’s just with my bare hands. Not only
+    am I extensively trained in unarmed combat, but I have access to the entire arsenal
+    of the United States Marine Corps and I will use it to its full extent to wipe
+    your miserable ass off the face of the continent, you little shit. If only you
+    could have known what unholy retribution your little “clever” comment was about
+    to bring down upon you, maybe you would have held your fucking tongue. But you
+    couldn’t, you didn’t, and now you’re paying the price, you goddamn idiot. I will
+    shit fury all over you and you will drown in it. You’re fucking dead, kiddo.
+  description: What did you say about me you little bitch?
+- tag:
+  - eirgrid
+  - EirGrid
+  - tso
+  - TSO
+  - electricity
+  value: EirGrid is a Transmission System Operator in the Republic of Ireland
+  description: ''
+- tag:
+  - git
+  - commit
+  - comment
+  - ammend
+  - change
+  - edit
+  value: git commit --amend
+  description: Amend a git commit message
+- tag:
+  - git
+  - nopush
+  - no-push
+  - no_push
+  - stop
+  - push
+  value: git remote set-url --push origin no_push
+  description: Prevent pushes to origin
+- tag:
+  - git
+  - patch
+  - create
+  - apply
+  - make
+  - diff
+  value: https://ariejan.net/2009/10/26/how-to-create-and-apply-a-patch-with-git/
+  description: Website explaining how to create and apply git patches
+- tag:
+  - git
+  - amend
+  - author
+  - commit
+  value: git commit --amend --author="Author Name <email@address.com>"
+  description: Amend the author of the commit
+- tag:
+  - make
+  - patch
+  - diff
+  value: diff -u file1 file2 > patch.name
+  description: Create a patch, when applied, will synchronise file1 with file2
+- tag:
+  - patch
+  - diff
+  - apply
+  value: patch < file.patch
+  description: Apply a patch created earlier using diff
+- tag:
+  - vim
+  - search
+  - append
+  - find
+  value: ":%s/pattern/&append/g"
+  description: Find all instances of pattern in a file and append append using Vim
+- tag:
+  - joke
+  - feminist
+  - vegan
+  - atheist
+  value: A feminist, an atheist, and a vegan walk into a bar. Everyone knew because
+    they immediately told EVERBODY.
+  description: Triggered
+- tag:
+  - ruby
+  - nonalphanumeric
+  - characters
+  - string
+  - remove
+  value: ".gsub(/[^0-9a-z ]/i, '')"
+  description: remove all non-alphanumeric characters from a Ruby String
