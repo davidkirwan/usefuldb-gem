@@ -1,3 +1,3 @@
 # UsefulDB
 
-http://davidkirwan.github.io/usefuldb-gem[]
+http://davidkirwan.github.io/usefuldb-gem
