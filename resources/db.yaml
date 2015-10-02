@@ -242,8 +242,8 @@ db:
   - coverage
   - emma
   value: http://emma.sourceforge.net
-  description: Emma is a Java code coverage tool, which produces statistics which give
-    an indication how well your code is covered by unit tests
+  description: Emma is a Java code coverage tool, which produces statistics which
+    give an indication how well your code is covered by unit tests
 - tag:
   - java
   - code
@@ -364,13 +364,13 @@ db:
   - vpn
   - routing
   - setup
-  value: 'sudo route del default wlan0/eth0 ; sudo route add default dev ppp0'
+  value: sudo route del default wlan0/eth0 ; sudo route add default dev ppp0
   description: Delete the default route, and route all traffic through the ppp0 connection
 - tag:
   - vpn
   - routing
   - restore
-  value: 'sudo route del default ppp0 ; sudo route add default dev wlan0'
+  value: sudo route del default ppp0 ; sudo route add default dev wlan0
   description: Delete the ppp0 route and restore the default
 - tag:
   - ruby
@@ -1305,3 +1305,8 @@ db:
   - remove
   value: ".gsub(/[^0-9a-z ]/i, '')"
   description: remove all non-alphanumeric characters from a Ruby String
+- tag:
+  - private
+  - sample
+  value: A sample private item
+  description: A sample private item.

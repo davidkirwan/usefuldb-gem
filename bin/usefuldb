@@ -4,117 +4,80 @@
 require 'rubygems'
 require 'usefuldb'
 require 'optparse'
+require 'optparse/time'
 require 'logger'
 
-#####################################################
-def addColour(text, colour_code)
-  "\e[#{colour_code}m#{text}\e[0m"
-end
-
-def red(text); addColour(text, 31); end
-def green(text); addColour(text, 32); end
-def yellow(text); addColour(text, 33); end
-def blue(text); addColour(text, 34); end
-#####################################################
-
 # Variables
-
-# Create the Logger instance
+### Create the Logger instance
 log = Logger.new(STDOUT)
 #log.level = Logger::DEBUG
 log.level = Logger::INFO
 #log.level = Logger::WARN
-
-
-options = {}
-optparse = nil
-welcome = nil
-
-# Setup the system for use
+### Setup the system for use
 UsefulDB.setup(log)
 
-begin
-  optparse = OptionParser.new do |opts|
-    
-    opts.banner = <<-WELCOME
-UsefulDB - a simple command and URL database (#{UsefulDB::Version})
-
-   Useage:  usefuldb <searchtag1> <searchtag2> .. <searchtagN>
-
+class CommandParser
+  def self.parse(args, log)
+    welcome = ""
+    optparse = OptionParser.new do |opts|
+      opts.banner = <<-WELCOME
+UsefulDB - a simple command and URL database
+  Useage:  usefuldb <searchtag1> <searchtag2> .. <searchtagN>
 
 WELCOME
-  
-    opts.on('-a', '--add', "Add an entry to the database") do |arg|
-      log.debug "add parameter passed"
-      options[:a] = arg
-    end
-    
-    opts.on('-d', '--delete', "Delete an entry from the database") do |arg|
-      log.debug "delete parameter passed"
-      options[:d] = arg
-    end
-    
-    opts.on('-l', '--list', "List all entries in the database") do |arg|
-      log.debug "list parameter passed"
-      options[:l] = arg
-    end
-    
-    
-    welcome = opts
-    
-    opts.on('-h', '--help', "Print out this message") do |arg|
-      log.debug "help parameter passed"
-      puts opts
-      exit
+
+      opts.on('-a', '--add', "Add an entry to the database") do |arg|
+        log.debug "The -a or --add flag is true, launching add system"
+        puts "Launching the add system:"
+        UsefulDB::GUI.add(log)
+        exit
+      end
+
+      opts.on('-d', '--delete', "Delete an entry from the database") do |arg|
+        log.debug "The -d or --delete flag is true, launching the delete system"
+        puts "Run the delete system:"
+        UsefulDB::GUI.remove(log)
+        exit
+      end
+
+      opts.on('-l', '--list', "List all entries in the database") do |arg|
+        log.debug "The -l or --list flag is true, launching the list system"
+        puts "Launching the list system:"
+        UsefulDB::GUI.list(log)
+        exit
+      end
+
+      opts.on('-v', '--version', 'Print the version') do |arg|
+        log.debug "The -v or --version flag is true, printing gem version"
+        puts "UsefulDB Version: #{UsefulDB::Version}"
+      end
+
+      opts.on_tail("-h", "--help", "Show this message") do
+        puts opts
+        exit
+      end
+
+      welcome = opts
     end
 
-  end.parse!
-rescue OptionParser::InvalidOption => e
-  puts "[" + e.message + "} Please see the following for usage instructions: \n"
-  puts welcome
-  log.fatal e.message
-  exit()
+    opts = optparse.parse!(args)
+    return opts, welcome
+  end
 end
 
-#############################################################################
 
-# Checking for flag parameters
-log.debug "Checking for parameters"
-if options.empty?
-  log.debug "No flag parameters were passed"
-  log.debug "Checking if ARGV is empty"
-  if ARGV.empty?
-    log.debug "No parameters of any kind were passed, exiting"
-    puts welcome
-    exit()
-  else
-    log.debug "At least one non flag parameter was passed, launching the search system"
-    log.debug ARGV
+begin
+  options, welcome = CommandParser.parse(ARGV, log)
+
+  unless ARGV.size == 0
     puts "Launching the search system:"
-    UsefulDB::GUI.search(ARGV, log)
+    UsefulDB::GUI.search(options, log)
+  else
+    puts welcome
   end
 
-else
-  log.debug "Some flags parameters were passed"
-  log.debug options
-  
-  
-  if options[:a]
-    log.debug "The -a or --add flag is true, launching add system"
-    puts "Launching the add system:"
-    UsefulDB::GUI.add(log)
-  
-  elsif options[:l]
-    log.debug "The -l or --list flag is true, launching the list system"
-    puts green("Launching the list system:")
-    UsefulDB::GUI.list(log)
-    
-  elsif options[:d]
-    log.debug "The -d or --delete flag is true, launching the delete system"
-    puts "Run the delete system:"
-    UsefulDB::GUI.remove(log)
-  end
-  
+rescue OptionParser::InvalidOption => e
+  log.fatal e.message
+  log.fatal "invoke with -h or --help for help"
+  exit
 end
-
-
