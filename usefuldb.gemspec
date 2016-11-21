@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
 usefuldb - simple database for storage of useful commands and or urls
 INSTALL
 
-  s.license 	= 'GNU GPL 2.0'
+  s.license 	= 'GPL 2.0'
   s.add_development_dependency "bundler"
   s.add_development_dependency "test-unit"
 end
