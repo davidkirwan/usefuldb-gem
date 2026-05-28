@@ -1,83 +1,9 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-# Require statements
-require 'rubygems'
-require 'usefuldb'
-require 'optparse'
-require 'optparse/time'
-require 'logger'
+require "logger"
+require "usefuldb"
+require "usefuldb/cli"
 
-# Variables
-### Create the Logger instance
-log = Logger.new(STDOUT)
-#log.level = Logger::DEBUG
-log.level = Logger::INFO
-#log.level = Logger::WARN
-### Setup the system for use
-UsefulDB.setup(log)
-
-class CommandParser
-  def self.parse(args, log)
-    welcome = ""
-    optparse = OptionParser.new do |opts|
-      opts.banner = <<-WELCOME
-UsefulDB - a simple command and URL database
-  Useage:  usefuldb <searchtag1> <searchtag2> .. <searchtagN>
-
-WELCOME
-
-      opts.on('-a', '--add', "Add an entry to the database") do |arg|
-        log.debug "The -a or --add flag is true, launching add system"
-        puts "Launching the add system:"
-        UsefulDB::GUI.add(log)
-        exit
-      end
-
-      opts.on('-d', '--delete', "Delete an entry from the database") do |arg|
-        log.debug "The -d or --delete flag is true, launching the delete system"
-        puts "Run the delete system:"
-        UsefulDB::GUI.remove(log)
-        exit
-      end
-
-      opts.on('-l', '--list', "List all entries in the database") do |arg|
-        log.debug "The -l or --list flag is true, launching the list system"
-        puts "Launching the list system:"
-        UsefulDB::GUI.list(log)
-        exit
-      end
-
-      opts.on('-v', '--version', 'Print the version') do |arg|
-        log.debug "The -v or --version flag is true, printing gem version"
-        puts "UsefulDB Version: #{UsefulDB::Version}"
-      end
-
-      opts.on_tail("-h", "--help", "Show this message") do
-        puts opts
-        exit
-      end
-
-      welcome = opts
-    end
-
-    opts = optparse.parse!(args)
-    return opts, welcome
-  end
-end
-
-
-begin
-  options, welcome = CommandParser.parse(ARGV, log)
-
-  unless ARGV.size == 0
-    puts "Launching the search system:"
-    UsefulDB::GUI.search(options, log)
-  else
-    puts welcome
-  end
-
-rescue OptionParser::InvalidOption => e
-  log.fatal e.message
-  log.fatal "invoke with -h or --help for help"
-  exit
-end
+log = Logger.new($stdout)
+exit UsefulDB::CLI.run(ARGV, log: log)

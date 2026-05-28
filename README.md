@@ -10,4 +10,18 @@ gem install usefuldb
 Build and install locally with `make build`, `make install`, or the equivalent `rake` tasks (`rake build`, `rake install`).
 
 ### Usage
-To run the system, simply call the _usefuldb_ script at the commandline for instructions
+```bash
+usefuldb help
+usefuldb search git push
+usefuldb search git commit --value-only
+usefuldb list
+usefuldb add --tags git,commit --value "git commit -m 'msg'"
+usefuldb show 42
+usefuldb remove 42
+usefuldb count
+usefuldb export backup.yaml
+usefuldb import backup.yaml
+usefuldb import other.yaml --replace
+```
+
+Run `usefuldb help` for the full command reference.

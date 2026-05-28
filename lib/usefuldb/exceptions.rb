@@ -1,15 +1,9 @@
-require 'rubygems'
-require 'usefuldb'
+# frozen_string_literal: true
 
 module UsefulDB
-
-  class EntryInDB < Exception
-  end
-  
-  class EmptyDB < Exception
-  end
-  
-  class KeyOutOfBounds < Exception
-  end
-
+  class EntryInDB < StandardError; end
+  class EmptyDB < StandardError; end
+  class KeyOutOfBounds < StandardError; end
+  class EntryNotFound < StandardError; end
+  class ImportError < StandardError; end
 end
