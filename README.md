@@ -6,8 +6,8 @@
 This gem is also stored on rubygems.org and can be installed with the following command:
 gem install usefuldb
 
-### Tests
-Run the tests against the codebase by calling __rake__ or __rake test__
+### Build
+Build and install locally with `make build`, `make install`, or the equivalent `rake` tasks (`rake build`, `rake install`).
 
 ### Usage
 To run the system, simply call the _usefuldb_ script at the commandline for instructions

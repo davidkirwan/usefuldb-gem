@@ -1,4 +1,5 @@
-source "http://rubygems.org"
+# frozen_string_literal: true
 
-gem "rake"
-gem "test-unit"
+source "https://rubygems.org"
+
+gemspec

@@ -1,23 +1,16 @@
-require 'rubygems'
-require 'bundler'
-Bundler::GemHelper.install_tasks
+# frozen_string_literal: true
 
-task :default => :test
+require_relative "lib/usefuldb/version"
+require "bundler/gem_tasks"
 
+desc "List available Rake tasks"
 task :menu do
-  puts welcomeMsg = <<-MSG
-rake build    # Build usefuldb-x.x.x.gem into the pkg directory
-rake install  # Build and install usefuldb-x.x.x.gem into system gems
-rake release  # Create tag vx.x.x and build and push usefuldb-x.x.x.gem to http://rubygems.org/
-rake test     # Run the unit testing suite on this gem.
-MSG
+  puts <<~MSG
+    rake build    # Build usefuldb-#{UsefulDB::Version}-*.gem into pkg/
+    rake install  # Build and install the gem locally
+    rake release  # Tag, build, and push to RubyGems (maintainers only)
+    rake clean    # Remove built artifacts from pkg/
+  MSG
 end
 
-desc "Run the unit testing suite on this gem."
-task :test do
-  $LOAD_PATH.unshift File.expand_path(File.dirname(__FILE__) + '/lib')
-  require 'usefuldb.rb'
-  Dir.glob("./test/*_test.rb").each do |file|
-   require file
-  end
-end
+task default: :menu
